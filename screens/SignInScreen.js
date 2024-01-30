@@ -14,7 +14,7 @@ const SignInScreen = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post('http://192.168.0.40:5000/signin', {
+      const response = await axios.post('http://51.21.134.104/signin', {
         username,
         password,
       });

@@ -15,7 +15,7 @@ export default function AppHomeScreen({ navigation }) {
 
   const getCurrentUsername = async () => {
     try {
-      const response = await axios.get('http://192.168.0.40:5000/get_current_username');
+      const response = await axios.get('http://51.21.134.104/get_current_username');
       const { username } = response.data;
       setUsername(username);
     } catch (error) {
@@ -33,7 +33,7 @@ export default function AppHomeScreen({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 10 }} contentContainerStyle={{ paddingVertical: 20 }}>
         <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 25}}>
           <Text style={{ fontSize: wp(6), fontWeight: 'bold', color: 'black' }}>Hi {username} 👋</Text>
-          <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black',  marginTop: 5}}>Let's get productive</Text>
+          <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black',  marginTop: 5}}>1066 Team</Text>
         </View>
 
     {/* Quick select */}
