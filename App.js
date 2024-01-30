@@ -6,7 +6,14 @@ import Home from './components/Home';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import AppHomeScreen from './screens/AppHomeScreen';
-import C12Screen from './screens/certifs/C12Screen';  // Import the C12Screen
+import C12Screen from './screens/certifs/C12Screen';
+import CP12 from './screens/certifs/CP12';
+import CertifSelection from './screens/CertifSelection';  // Import the CertifSelection component
+import { NativeWindStyleSheet } from 'nativewind';
+
+NativeWindStyleSheet.setOutput({
+  default: 'native',
+});
 
 const Stack = createStackNavigator();
 
@@ -24,17 +31,24 @@ export default function App() {
         <Stack.Screen
           name="AppHome"
           component={AppHomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CertifSelection"
+          component={CertifSelection}  // Add the CertifSelection component
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="C12Screen"
+          component={C12Screen}
           options={{
-            title: 'GasGate',
-            headerLeft: () => null,
+            title: 'C12 Page',
           }}
         />
         <Stack.Screen
-          name="C12"
-          component={C12Screen}  // Add the C12Screen component
-          options={{
-            title: 'C12 Page',  // Set a custom title for the C12Screen
-          }}
+          name="CP12"
+          component={CP12}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
       <StatusBar style="auto" />

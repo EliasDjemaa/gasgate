@@ -4,6 +4,7 @@ import { CheckBox } from 'react-native-elements';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
+
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,14 @@ const SignInScreen = () => {
 
   return (
     <View style={styles.container}>
+
+
+    {/* Back button to navigate to Home screen */}
+    <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+      <Text>Don't have an account? Sign up here</Text>
+    </TouchableOpacity>
+
+
       {/* Input fields for username and password */}
       <TextInput
         style={styles.input}
@@ -55,10 +64,7 @@ const SignInScreen = () => {
         />
       </View>
 
-      {/* Back button to navigate to Home screen */}
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <Text>Don't have an account? Sign up here</Text>
-      </TouchableOpacity>
+
 
       {/* Sign In button */}
       <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>

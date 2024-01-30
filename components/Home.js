@@ -1,5 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Pressable } from "native-base";
+import { HStack } from 'native-base';
+import { Box, Badge, Spacer, Flex, Input} from 'native-base';
 
 const Home = ({ navigation }) => {
   const handleSignIn = () => {

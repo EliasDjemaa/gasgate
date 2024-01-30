@@ -161,46 +161,101 @@ def update_pdf():
     print("Received data:", data)
 
     # Extract data from the request
-    job_number = data.get('jobNumber')
-    gas_safe_license = data.get('gasSafeLicense')
-    print_name = data.get('printName')
-    positionHeld =  data.get('positionHeld')
+    job_number = data.get('jobNum')
     jobAddress =  data.get('jobAddress')
-    postcode = data.get('postcode')
-    telNo = data.get('telNo')
+
+    telNo = data.get('jobTele')
     landlordName  = data.get('landlordName')
-    landlordAddress  = data.get('landlordAddress')
-    landlordPostcode  = data.get('landlordPostcode')
-    landlordTelNo = data.get('landlordTelNo')
-    appliancesTested = data.get('appliancesTested')
-    appliance_details_data = data.get('applianceDetails')
-    inspection_details_data = data.get('inspectionDetailsTable')
-    inspectionDetails = data.get('inspectionDetails')
-    warningSerialNo = data.get('warningSerialNo')
-    remedialAction = data.get('remedialAction')
-    gasInstallationChecked = data.get('gasInstallationChecked')
-    ecvAccessibleChecked = data.get('ecvAccessibleChecked')
-    protectiveEquipmentChecked = data.get('protectiveEquipmentChecked')
+    appliLocation1  = data.get('appliLocation1')
+    appliType1  = data.get('appliType1')
+    appliMake1  = data.get('appliMake1')
+    appliModel1  = data.get('appliModel1')
+    landlordsAppi1  = data.get('landlordsAppi1')
+    landlordsInsp1  = data.get('landlordsInsp1')
+    flueType1  = data.get('flueType1')
+    appliLocation2  = data.get('appliLocation2')
+    appliType2  = data.get('appliType2')
+    appliMake2  = data.get('appliMake2')
+    appliModel2  = data.get('appliModel2')
+    landlordsAppi2  = data.get('landlordsAppi2')
+    landlordsInsp2  = data.get('landlordsInsp2')
+    flueType2  = data.get('flueType2')
+    appliLocation3  = data.get('appliLocation3')
+    appliType3  = data.get('appliType3')
+    appliMake3  = data.get('appliMake3')
+    appliModel3  = data.get('appliModel3')
+    landlordsAppi3  = data.get('landlordsAppi3')
+    landlordsInsp3  = data.get('landlordsInsp3')
+    flueType3  = data.get('flueType3')
+    appliLocation4  = data.get('appliLocation4')
+    appliType4  = data.get('appliType4')
+    appliMake4  = data.get('appliMake4')
+    appliModel4  = data.get('appliModel4')
+    landlordsAppi4  = data.get('landlordsAppi4')
+    landlordsInsp4  = data.get('landlordsInsp4')
+    flueType4  = data.get('flueType4')
+
+
+
+    pressure1  = data.get('pressure1')
+    initCombustion1  = data.get('initCombustion1')
+    finalCombustion1  = data.get('finalCombustion1')
+    safetyDevice1  = data.get('safetyDevice1')
+    ventilationProv1  = data.get('ventilationProv1')
+    chimneyCond1  = data.get('chimneyCond1')
+    flueCheck1  = data.get('flueCheck1')
+    applianceServiced1  = data.get('applianceServiced1')
+    applianceSafe1  = data.get('applianceSafe1')
+    pressure2  = data.get('pressure2')
+    initCombustion2  = data.get('initCombustion2')
+    finalCombustion2  = data.get('finalCombustion2')
+    safetyDevice2  = data.get('safetyDevice2')
+    ventilationProv2  = data.get('ventilationProv2')
+    chimneyCond2  = data.get('chimneyCond2')
+    flueCheck2  = data.get('flueCheck2')
+    applianceServiced2  = data.get('applianceServiced2')
+    applianceSafe2  = data.get('applianceSafe2')
+    pressure3  = data.get('pressure3')
+    initCombustion3  = data.get('initCombustion3')
+    finalCombustion3  = data.get('finalCombustion3')
+    safetyDevice3  = data.get('safetyDevice3')
+    ventilationProv3  = data.get('ventilationProv3')
+    chimneyCond3  = data.get('chimneyCond3')
+    flueCheck3  = data.get('flueCheck3')
+    applianceServiced3  = data.get('applianceServiced3')
+    applianceSafe3  = data.get('applianceSafe3')
+    pressure4  = data.get('pressure4')
+    initCombustion4  = data.get('initCombustion4')
+    finalCombustion4  = data.get('finalCombustion4')
+    safetyDevice4  = data.get('safetyDevice4')
+    ventilationProv4  = data.get('ventilationProv4')
+    chimneyCond4  = data.get('chimneyCond4')
+    flueCheck4  = data.get('flueCheck4')
+    applianceServiced4  = data.get('applianceServiced4')
+    applianceSafe4  = data.get('applianceSafe4')
+    approvedAlarm1  = data.get('approvedAlarm1')
+    alarmInDate1  = data.get('alarmInDate1')
+    alarmTest1  = data.get('alarmTest1')
+    approvedAlarm2  = data.get('approvedAlarm2')
+    alarmInDate2  = data.get('alarmInDate2')
+    alarmTest2  = data.get('alarmTest2')
+    approvedAlarm3  = data.get('approvedAlarm3')
+    alarmInDate3  = data.get('alarmInDate3')
+    alarmTest3  = data.get('alarmTest3')
+    approvedAlarm4  = data.get('approvedAlarm4')
+    alarmInDate4  = data.get('alarmInDate4')
+    alarmTest4  = data.get('alarmTest4')
+    inspectionDescription  = data.get('inspectionDescription')
+    warningSerial  = data.get('warningSerial')
+    remedialDescription  = data.get('remedialDescription')
+    visualInspection  = data.get('visualInspection')
+    emergencyControl  = data.get('emergencyControl')
+    gasTightness  = data.get('gasTightness')
+    protectiveEquipment  = data.get('protectiveEquipment')
     # ... (extract other data)
 
     
-    inspection_details = []
-    for row in inspection_details_data:
-        # Assuming each row is a list
-        inspection_details.append({
-            'Operating pressure in mbar or heat input inkW': row[0],
-            'Initial combustion analyser reading if applicable': row[1],
-            'Final combustion analyser reading if applicable': row[2],
-            'Safety devices correct operation YesNoNA': row[3],
-            'Ventilation provision satisfactory YesNo': row[4],
-            'Visual condition of chimneytermination Satisfactory PassFailNA': row[5],
-            'Flue performance checks PassFailNA': row[6],
-            'Appliance serviced YesNo': row[7],
-            'Appliance safe to use YesNo': row[8],
-            'Approved CO alarm fitted YesNoNARow': row[9],
-            'Is CO alarm in date YesNoNARow': row[10],
-            'Testing of CO alarm satisfactory YesNoNARow': row[11],
-        })
+
 
     # Create a data dictionary for fillpdfs.write_fillable_pdf
     data_dict = {
@@ -209,118 +264,102 @@ def update_pdf():
     'Print name': fullname,
     'Gas operative': position_held,
     'Dateofvisit': '1',
-    'Name MrMrsMissMs': print_name,
+    'Name MrMrsMissMs': '',
     'Address 1': jobAddress,
-    'Postcode_2': postcode,
+    'Postcode_2': 'test',
     'Tel No_2': telNo,
     'Name MrMrsMissMs_2': landlordName,
-    'Address 1_2': landlordAddress,
+    'Address 1_2': ' ',
     'Address 3_2': '',
-    'Postcode': landlordPostcode,
-    'Tel No': landlordTelNo,
-    'Number of appliances tested': appliancesTested,
-    'Location1': 'L1',
-    'Appliance type1': 'AT1',
-    'Make1': 'M1',
-    'Model1': 'MO1',
-    'Landlords appliance YesNoNA1': 'LA1',
-    'Landlords inspected YesNo1': 'LI1',
-    'Flue Type OFRSFL1': 'FT1',
-    'Location2': 'L2',
-    'Appliance type2': 'AT2',
-    'Make2': 'M2',
-    'Model2': 'MO2',
-    'Landlords appliance YesNoNA2': 'LA2',
-    'Landlords inspected YesNo2': 'LI2',
-    'Flue Type OFRSFL2': 'FT2',
-    'Location3': 'L3',
-    'Appliance type3': 'AT3',
-    'Make3': 'M3',
-    'Model3': 'MO3',
-    'Landlords appliance YesNoNA3': 'LA3',
-    'Landlords inspected YesNo3': 'LI3',
-    'Flue Type OFRSFL3': 'FT3',
-    'Location4': 'L4',
-    'Appliance type4': 'AT4',
-    'Make4': 'M4',
-    'Model4': 'MO4',
-    'Landlords appliance YesNoNA4': 'LA4',
-    'Landlords inspected YesNo4': 'LI4',
-    'Flue Type OFRSFL4': 'FT4',
-    'Operating pressure in mbar or heat input inkW1': 'OP1',
-    'Initial combustion analyser reading if applicable1': 'ICA1',
-    'Final combustion analyser reading if applicable1': 'FCA1',
-    'Safety devices correct operation YesNoNA1': 'SDC1',
-    'Ventilation provision satisfactory YesNo1': 'VPS1',
-    'Visual condition of chimneytermination Satisfactory PassFailNA1': 'VCO1',
-    'Flue performance checks PassFailNA1': 'FPC1',
-    'Appliance serviced YesNo1': 'ASYN1',
-    'Appliance safe to use YesNo1': 'ASTU1',
-    'Approved CO alarm fitted YesNoNARow1': 'ACAF1',
-    'Is CO alarm in date YesNoNARow1': 'ICAID1',
-    'Testing of CO alarm satisfactory YesNoNARow1': 'TOCAS1',
-    'Operating pressure in mbar or heat input inkW2': 'OP2',
-    'Initial combustion analyser reading if applicable2': 'ICA2',
-    'Final combustion analyser reading if applicable2': 'FCA2',
-    'Safety devices correct operation YesNoNA2': 'SDC2',
-    'Ventilation provision satisfactory YesNo2': 'VPS2',
-    'Visual condition of chimneytermination Satisfactory PassFailNA2': 'VCO2',
-    'Flue performance checks PassFailNA2': 'FPC2',
-    'Appliance serviced YesNo2': 'ASYN2',
-    'Appliance safe to use YesNo2': 'ASTU2',
-    'Approved CO alarm fitted YesNoNARow2': 'ACAF2',
-    'Is CO alarm in date YesNoNARow2': 'ICAID2',
-    'Testing of CO alarm satisfactory YesNoNARow2': 'TOCAS2',
-    'Operating pressure in mbar or heat input inkW3': 'OP3',
-    'Initial combustion analyser reading if applicable3': 'ICA3',
-    'Final combustion analyser reading if applicable3': 'FCA3',
-    'Safety devices correct operation YesNoNA3': 'SDC3',
-    'Ventilation provision satisfactory YesNo3': 'VPS3',
-    'Visual condition of chimneytermination Satisfactory PassFailNA3': 'VCO3',
-    'Flue performance checks PassFailNA3': 'FPC3',
-    'Appliance serviced YesNo3': 'ASYN3',
-    'Appliance safe to use YesNo3': 'ASTU3',
-    'Approved CO alarm fitted YesNoNARow3': 'ACAF3',
-    'Is CO alarm in date YesNoNARow3': 'ICAID3',
-    'Testing of CO alarm satisfactory YesNoNARow3': 'TOCAS3',
-    'Operating pressure in mbar or heat input inkW4': 'OP4',
-    'Initial combustion analyser reading if applicable4': 'ICA4',
-    'Final combustion analyser reading if applicable4': 'FCA4',
-    'Safety devices correct operation YesNoNA4': 'SDC4',
-    'Ventilation provision satisfactory YesNo4': 'VPS4',
-    'Visual condition of chimneytermination Satisfactory PassFailNA4': 'VCO4',
-    'Flue performance checks PassFailNA4': 'FPC4',
-    'Appliance serviced YesNo4': 'ASYN4',
-    'Appliance safe to use YesNo4': 'ASTU4',
-    'Approved CO alarm fitted YesNoNARow4': 'ACAF4',
-    'Is CO alarm in date YesNoNARow4': 'ICAID4',
-    'Testing of CO alarm satisfactory YesNoNARow4': 'TOCAS4',
-    'Inspection1': inspectionDetails, 'WN1': warningSerialNo, 
-    'Details of remedials': remedialAction,
-    'Gas installation pipework satisfactory visual inspection YesNo': gasInstallationChecked,
-    'undefined': ecvAccessibleChecked, 
-    'undefined_2': 'SGT', 
-    'undefined_3': protectiveEquipmentChecked, 
+    'Postcode': ' ',
+    'Tel No': ' ',
+    'Number of appliances tested': ' ',
+    'Location1': appliLocation1,
+    'Appliance type1': appliType1,
+    'Make1': appliMake1,
+    'Model1': appliModel1,
+    'Landlords appliance YesNoNA1': landlordsAppi1,
+    'Landlords inspected YesNo1': landlordsInsp1,
+    'Flue Type OFRSFL1': flueType1,
+    'Location2': appliLocation2,
+    'Appliance type2': appliType2,
+    'Make2': appliMake2,
+    'Model2': appliModel2,
+    'Landlords appliance YesNoNA2': landlordsAppi2,
+    'Landlords inspected YesNo2': landlordsInsp2,
+    'Flue Type OFRSFL2': flueType2,
+    'Location3': appliLocation3,
+    'Appliance type3': appliType3,
+    'Make3': appliMake3,
+    'Model3': appliModel3,
+    'Landlords appliance YesNoNA3': landlordsAppi3,
+    'Landlords inspected YesNo3': landlordsInsp3,
+    'Flue Type OFRSFL3': flueType3,
+    'Location4': appliLocation4,
+    'Appliance type4': appliType4,
+    'Make4': appliMake4,
+    'Model4': appliModel4,
+    'Landlords appliance YesNoNA4': landlordsAppi4,
+    'Landlords inspected YesNo4': landlordsInsp4,
+    'Flue Type OFRSFL4': flueType4,
+    'Operating pressure in mbar or heat input inkW1': pressure1,
+    'Initial combustion analyser reading if applicable1': initCombustion1,
+    'Final combustion analyser reading if applicable1': finalCombustion1,
+    'Safety devices correct operation YesNoNA1': safetyDevice1,
+    'Ventilation provision satisfactory YesNo1': ventilationProv1,
+    'Visual condition of chimneytermination Satisfactory PassFailNA1': chimneyCond1,
+    'Flue performance checks PassFailNA1': flueCheck1,
+    'Appliance serviced YesNo1': applianceServiced1,
+    'Appliance safe to use YesNo1': applianceSafe1,
+    'Approved CO alarm fitted YesNoNARow1': approvedAlarm1,
+    'Is CO alarm in date YesNoNARow1': alarmInDate1,
+    'Testing of CO alarm satisfactory YesNoNARow1': alarmTest1,
+    'Operating pressure in mbar or heat input inkW2': pressure2,
+    'Initial combustion analyser reading if applicable2': initCombustion2,
+    'Final combustion analyser reading if applicable2': finalCombustion2,
+    'Safety devices correct operation YesNoNA2': safetyDevice2,
+    'Ventilation provision satisfactory YesNo2': ventilationProv2,
+    'Visual condition of chimneytermination Satisfactory PassFailNA2': chimneyCond2,
+    'Flue performance checks PassFailNA2': flueCheck2,
+    'Appliance serviced YesNo2': applianceServiced2,
+    'Appliance safe to use YesNo2': applianceSafe2,
+    'Approved CO alarm fitted YesNoNARow2': approvedAlarm2,
+    'Is CO alarm in date YesNoNARow2': alarmInDate2,
+    'Testing of CO alarm satisfactory YesNoNARow2': alarmTest2,
+    'Operating pressure in mbar or heat input inkW3': pressure3,
+    'Initial combustion analyser reading if applicable3': initCombustion3,
+    'Final combustion analyser reading if applicable3': finalCombustion3,
+    'Safety devices correct operation YesNoNA3': safetyDevice3,
+    'Ventilation provision satisfactory YesNo3': ventilationProv3,
+    'Visual condition of chimneytermination Satisfactory PassFailNA3': chimneyCond3,
+    'Flue performance checks PassFailNA3': flueCheck3,
+    'Appliance serviced YesNo3': applianceServiced3,
+    'Appliance safe to use YesNo3': applianceSafe3,
+    'Approved CO alarm fitted YesNoNARow3': approvedAlarm3,
+    'Is CO alarm in date YesNoNARow3': alarmInDate3,
+    'Testing of CO alarm satisfactory YesNoNARow3': alarmTest3,
+    'Operating pressure in mbar or heat input inkW4': pressure4,
+    'Initial combustion analyser reading if applicable4': initCombustion4,
+    'Final combustion analyser reading if applicable4': finalCombustion4,
+    'Safety devices correct operation YesNoNA4': safetyDevice4,
+    'Ventilation provision satisfactory YesNo4': ventilationProv4,
+    'Visual condition of chimneytermination Satisfactory PassFailNA4': chimneyCond4,
+    'Flue performance checks PassFailNA4': flueCheck4,
+    'Appliance serviced YesNo4': applianceServiced4,
+    'Appliance safe to use YesNo4': applianceSafe4,
+    'Approved CO alarm fitted YesNoNARow4': approvedAlarm4,
+    'Is CO alarm in date YesNoNARow4': alarmInDate4,
+    'Testing of CO alarm satisfactory YesNoNARow4': alarmTest4,
+    'Inspection1': inspectionDescription, 'WN1': warningSerial, 
+    'Details of remedials': remedialDescription,
+    'Gas installation pipework satisfactory visual inspection YesNo': visualInspection,
+    'undefined': emergencyControl, 
+    'undefined_2': gasTightness, 
+    'undefined_3': protectiveEquipment, 
     'Print Name': 'ENAME1', 
     'Received by Signed': 'RNAME2'
 }
-    
-    # Iterate over individual appliance details
-    for index, appliance in enumerate(appliance_details_data):
-        data_dict.update({
-            f'Location{index + 1}': appliance.get('location'),
-            f'Appliance type{index + 1}': appliance.get('applianceType'),
-            f'Make{index + 1}': appliance.get('make'),
-            f'Model{index + 1}': appliance.get('model'),
-            f'Landlords appliance YesNoNA{index + 1}': appliance.get('isLandlordAppliance'),
-            f'Landlords inspected YesNo{index + 1}': appliance.get('isLandlordInspected'),
-            f'Flue Type OFRSFL{index + 1}': appliance.get('flueType'),
-        })
-        
-    # Iterate over individual inspection details
-    for index, inspection_detail in enumerate(inspection_details):
-        for key, value in inspection_detail.items():
-            data_dict[f'{key}{index + 1}'] = value
+
 
     # Update the PDF
     pdf_path = r'C:\Users\Elias\Documents\GitHub\gasgate\gasgate\flask-server\CP12(DomesticServicing)Master.pdf'
@@ -346,6 +385,35 @@ def update_pdf():
         as_attachment=True,
         mimetype='application/pdf'
     )
+
+@app.route('/get-pdf-url', methods=['GET'])
+def get_pdf_url():
+    host = request.host_url  # Get the host URL of the current request
+    pdf_url = host + 'download-pdf'  # Combine the host URL with the endpoint
+    return jsonify({'pdf_url': pdf_url})
+
+@app.route('/download-pdf', methods=['GET'])
+def download_pdf():
+    return send_file(r'C:\Users\Elias\Documents\GitHub\gasgate\gasgate\flask-server\updated.pdf', as_attachment=True, mimetype='application/pdf')
+
+@app.route('/get_current_username', methods=['GET'])
+def get_current_username():
+    # Check if the user is logged in
+    if 'user_id' not in session:
+        return jsonify({'error': 'User not logged in'}), 401
+
+    # Fetch the current user's information
+    user_id = session['user_id']
+    current_user = Users.query.get(user_id)
+
+    # Check if the user exists
+    if not current_user:
+        return jsonify({'error': 'User not found'}), 404
+
+    # Access user details (username or fullname, depending on your model)
+    username = current_user.username  # Replace with the actual field in your model
+
+    return jsonify({'username': username}), 200
 
 
 if __name__ == '__main__':
