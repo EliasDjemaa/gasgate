@@ -15,7 +15,7 @@ export default function AppHomeScreen({ navigation }) {
 
   const getCurrentUsername = async () => {
     try {
-      const response = await axios.get('http://51.21.134.104/get_current_username');
+      const response = await axios.get('http://51.21.134.104/get_current_username'); 
       const { username } = response.data;
       setUsername(username);
     } catch (error) {
@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   iconContainer: {
-    borderRadius: 50,  // Make it a circle
-    padding: 6,       // Adjust padding for the circle background
-    marginRight: 0,   // Add margin to separate the icon from text
+    borderRadius: 50,  
+    padding: 6,       
+    marginRight: 0,   
   },
 });
