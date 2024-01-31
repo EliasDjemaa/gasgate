@@ -705,7 +705,7 @@ const updateAndDownloadPdf = async () => {
 
       const { file_url } = response.data;
 
-      // Check if file_url is present in the response
+      // Check if file_url is present in the response - YAYO
       if (file_url) {
         // Open the PDF URL in the user's default browser
         await Linking.openURL(file_url);
