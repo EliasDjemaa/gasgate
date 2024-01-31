@@ -8,6 +8,7 @@ import axios from 'axios';
 
 
 
+
 export default function CP12({ navigation }) {
     const [activeSlide, setActiveSlide] = useState(0);
     const [jobAddressContainerHeight, setJobAddressContainerHeight] = useState(130);
@@ -555,24 +556,26 @@ export default function CP12({ navigation }) {
         </View>
     );
 
-    const openPdfInBrowser = () => {
-        // Fetch the PDF URL from the backend
-        axios.get('http://192.168.0.40:5000/get-pdf-url')
-          .then(response => {
-            const { pdf_url } = response.data;
+    const openPdfInBrowser = async () => {
+        try {
+            const response = await axios.get('http://51.21.134.104:5000/get-pdf-url/');
+            const { file_url } = response.data;
     
+            // Use React Native's Linking.openURL with the full URL
+            const publicUrl = `http://51.21.134.104:5000${file_url}`;
+            
             // Open the PDF URL in the user's default browser
-            Linking.openURL(pdf_url)
-              .catch(error => console.error('Error opening URL: ', error));
-          })
-          .catch(error => console.error('Error fetching PDF URL: ', error));
-      };
+            await Linking.openURL(publicUrl);
+        } catch (error) {
+            console.error('Error fetching or opening PDF URL:', error);
+        }
+    };
 
 
     // Function to handle back end sending of data
     const sendDataToBackend = async () => {
     try {
-        const backendURL = 'http://192.168.0.40:5000/update_pdf';
+        const backendURL = 'http://51.21.134.104/update_pdf';
 
 
     const dataToSend = {
@@ -691,6 +694,28 @@ export default function CP12({ navigation }) {
     console.error('Error sending data to backend:', error.message);
     }
 };
+
+const updateAndDownloadPdf = async () => {
+    try {
+      // Call the Flask endpoint to update the PDF and get the public URL
+      const response = await axios.post('http://51.21.134.104:5000/update_pdf_link', {});
+
+      // Log the response for debugging purposes
+      console.log('Response from server:', response.data);
+
+      const { file_url } = response.data;
+
+      // Check if file_url is present in the response
+      if (file_url) {
+        // Open the PDF URL in the user's default browser
+        await Linking.openURL(file_url);
+      } else {
+        console.error('No file URL received from the server.');
+      }
+    } catch (error) {
+      console.error('Error updating or downloading PDF:', error);
+    }
+  };
 
 
 
@@ -1090,8 +1115,16 @@ export default function CP12({ navigation }) {
                         <Text style={styles.submitButtonText}>Submit</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.submitButton} onPress={openPdfInBrowser}>
-                        <Text style={styles.submitButtonText}>Download PDF</Text>
+                    <TouchableOpacity
+                        style={{
+                        marginTop: 20,
+                        padding: 10,
+                        backgroundColor: 'blue',
+                        borderRadius: 5,
+                        }}
+                        onPress={updateAndDownloadPdf}
+                    >
+                        <Text style={{ color: 'white' }}>Update and Download PDF</Text>
                     </TouchableOpacity>
 
 
