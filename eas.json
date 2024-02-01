@@ -8,5 +8,14 @@
         "distribution": "internal"
       },
       "production": {}
+    },
+    "submit": {
+      "production": {
+        "ios": {
+          "appleId" : "elias.djemaa.95@icloud.com",
+          "ascAppId": "6477066514",
+          "appleTeamId" : "NHVB3U865Z"
+        }
+      }
     }
   }

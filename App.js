@@ -6,7 +6,6 @@ import Home from './components/Home';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import AppHomeScreen from './screens/AppHomeScreen';
-import C12Screen from './screens/certifs/C12Screen';
 import CP12 from './screens/certifs/CP12';
 import CertifSelection from './screens/CertifSelection';  // Import the CertifSelection component
 import { NativeWindStyleSheet } from 'nativewind';
@@ -37,13 +36,6 @@ export default function App() {
           name="CertifSelection"
           component={CertifSelection}  // Add the CertifSelection component
           options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="C12Screen"
-          component={C12Screen}
-          options={{
-            title: 'C12 Page',
-          }}
         />
         <Stack.Screen
           name="CP12"

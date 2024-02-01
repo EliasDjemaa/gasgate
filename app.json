@@ -29,7 +29,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.gasgate"
+      "bundleIdentifier": "org.name.gasgate",
+      "icon": "./assets/icon.png"
     },
     "android": {
       "adaptiveIcon": {
