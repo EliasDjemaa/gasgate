@@ -8,7 +8,8 @@ import SignUpScreen from './screens/SignUpScreen';
 import AppHomeScreen from './screens/AppHomeScreen';
 import CP12 from './screens/certifs/CP12';
 import CP16 from './screens/certifs/CP16';
-import CertifSelection from './screens/CertifSelection';  // Import the CertifSelection component
+import CertifSelection from './screens/CertifSelection'; 
+import Completed from './screens/Completed'; 
 import { NativeWindStyleSheet } from 'nativewind';
 
 NativeWindStyleSheet.setOutput({
@@ -44,6 +45,11 @@ export default function App() {
         <Stack.Screen
           name="CertifSelection"
           component={CertifSelection}  // Add the CertifSelection component
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Completed"
+          component={Completed}  // Add the CertifSelection component
           options={{ headerShown: false }}
         />
         <Stack.Screen

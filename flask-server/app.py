@@ -388,7 +388,7 @@ def update_pdf():
 
 
 @app.route('/update_cp16', methods=['POST'])
-def update_pdf():
+def update_cp16():
     # Check if the user is logged in
     if 'user_id' not in session:
         return jsonify({'error': 'User not logged in'}), 401
@@ -420,6 +420,8 @@ def update_pdf():
 
     testMethod  = data.get('testMethod')
     installation  = data.get('installation')
+    isolatedComp  = data.get('isolatedComp')
+    calcStrength  = data.get('calcStrength')
     testMedium  = data.get('testMedium')
     stabilisationPeriod  = data.get('stabilisationPeriod')
     strengthTestDur  = data.get('strengthTestDur')
@@ -429,204 +431,147 @@ def update_pdf():
     pressureDrop  = data.get('pressureDrop')
     strengthPF  = data.get('strengthPF')
 
-    landlordsAppi2  = data.get('landlordsAppi2')
-    landlordsInsp2  = data.get('landlordsInsp2')
-    flueType2  = data.get('flueType2')
-    appliLocation3  = data.get('appliLocation3')
-    appliType3  = data.get('appliType3')
-    appliMake3  = data.get('appliMake3')
-    appliModel3  = data.get('appliModel3')
-    landlordsAppi3  = data.get('landlordsAppi3')
-    landlordsInsp3  = data.get('landlordsInsp3')
-    flueType3  = data.get('flueType3')
-    appliLocation4  = data.get('appliLocation4')
-    appliType4  = data.get('appliType4')
-    appliMake4  = data.get('appliMake4')
-    appliModel4  = data.get('appliModel4')
-    landlordsAppi4  = data.get('landlordsAppi4')
-    landlordsInsp4  = data.get('landlordsInsp4')
-    flueType4  = data.get('flueType4')
+    gasType  = data.get('gasType')
+    tightnessTestMethod  = data.get('tightnessTestMethod')
+    weatherChange  = data.get('weatherChange')
+    meterType  = data.get('meterType')
+    meterDesignation  = data.get('meterDesignation')
+    meterBypass  = data.get('meterBypass')
+    installationVolume  = data.get('installationVolume')
+    installationPipework  = data.get('installationPipework')
+    totalIV  = data.get('totalIV')
+    testMediumFGA  = data.get('testMediumFGA')
+    tightnessTestPressure  = data.get('tightnessTestPressure')
+    pressureGuageType  = data.get('pressureGuageType')
+    maxLeak  = data.get('maxLeak')
+    testPeriod  = data.get('testPeriod')
+    stablePeriod  = data.get('stablePeriod')
+    tightnessTestDuration  = data.get('tightnessTestDuration')
+    ventilatedAreas  = data.get('ventilatedAreas')
+    barometricPressure  = data.get('barometricPressure')
+    tightnessFindings  = data.get('tightnessFindings')
+    pressureDropActual  = data.get('pressureDropActual')
+    leakRateActual  = data.get('leakRateActual')
+    ventilatedAreasChecked  = data.get('ventilatedAreasChecked')
+    tightnessPass  = data.get('tightnessPass')
 
+    riskAssessment  = data.get('riskAssessment')
+    purgeWriteUp  = data.get('purgeWriteUp')
+    noSmoking  = data.get('noSmoking')
+    purgeAdvice  = data.get('purgeAdvice')
+    valveLabeling  = data.get('valveLabeling')
+    nitrogenCheck  = data.get('nitrogenCheck')
+    extinguisherCheck  = data.get('extinguisherCheck')
+    radioCheck  = data.get('radioCheck')
+    elecBondCheck  = data.get('elecBondCheck')
+    calcPurgeVolume  = data.get('calcPurgeVolume')
+    pipeworkFittingCheck  = data.get('pipeworkFittingCheck')
+    totalPurgeVolume  = data.get('totalPurgeVolume')
+    gasDeviceCheck  = data.get('gasDeviceCheck')
 
+    purgeNoting  = data.get('purgeNoting')
+    purgePass  = data.get('purgePass')
 
-    pressure1  = data.get('pressure1')
-    initCombustion1  = data.get('initCombustion1')
-    finalCombustion1  = data.get('finalCombustion1')
-    safetyDevice1  = data.get('safetyDevice1')
-    ventilationProv1  = data.get('ventilationProv1')
-    chimneyCond1  = data.get('chimneyCond1')
-    flueCheck1  = data.get('flueCheck1')
-    applianceServiced1  = data.get('applianceServiced1')
-    applianceSafe1  = data.get('applianceSafe1')
-    pressure2  = data.get('pressure2')
-    initCombustion2  = data.get('initCombustion2')
-    finalCombustion2  = data.get('finalCombustion2')
-    safetyDevice2  = data.get('safetyDevice2')
-    ventilationProv2  = data.get('ventilationProv2')
-    chimneyCond2  = data.get('chimneyCond2')
-    flueCheck2  = data.get('flueCheck2')
-    applianceServiced2  = data.get('applianceServiced2')
-    applianceSafe2  = data.get('applianceSafe2')
-    pressure3  = data.get('pressure3')
-    initCombustion3  = data.get('initCombustion3')
-    finalCombustion3  = data.get('finalCombustion3')
-    safetyDevice3  = data.get('safetyDevice3')
-    ventilationProv3  = data.get('ventilationProv3')
-    chimneyCond3  = data.get('chimneyCond3')
-    flueCheck3  = data.get('flueCheck3')
-    applianceServiced3  = data.get('applianceServiced3')
-    applianceSafe3  = data.get('applianceSafe3')
-    pressure4  = data.get('pressure4')
-    initCombustion4  = data.get('initCombustion4')
-    finalCombustion4  = data.get('finalCombustion4')
-    safetyDevice4  = data.get('safetyDevice4')
-    ventilationProv4  = data.get('ventilationProv4')
-    chimneyCond4  = data.get('chimneyCond4')
-    flueCheck4  = data.get('flueCheck4')
-    applianceServiced4  = data.get('applianceServiced4')
-    applianceSafe4  = data.get('applianceSafe4')
-    approvedAlarm1  = data.get('approvedAlarm1')
-    alarmInDate1  = data.get('alarmInDate1')
-    alarmTest1  = data.get('alarmTest1')
-    approvedAlarm2  = data.get('approvedAlarm2')
-    alarmInDate2  = data.get('alarmInDate2')
-    alarmTest2  = data.get('alarmTest2')
-    approvedAlarm3  = data.get('approvedAlarm3')
-    alarmInDate3  = data.get('alarmInDate3')
-    alarmTest3  = data.get('alarmTest3')
-    approvedAlarm4  = data.get('approvedAlarm4')
-    alarmInDate4  = data.get('alarmInDate4')
-    alarmTest4  = data.get('alarmTest4')
-    inspectionDescription  = data.get('inspectionDescription')
-    warningSerial  = data.get('warningSerial')
     remedialDescription  = data.get('remedialDescription')
-    visualInspection  = data.get('visualInspection')
-    emergencyControl  = data.get('emergencyControl')
-    gasTightness  = data.get('gasTightness')
-    protectiveEquipment  = data.get('protectiveEquipment')
-    # ... (extract other data)
-
-    
+    strengthTest  = data.get('strengthTest')
+    purgeTest  = data.get('purgeTest')
+    tightnessTest  = data.get('tightnessTest')
+    emailedTo  = data.get('emailedTo')
+    copyDeclined  = data.get('copyDeclined')
 
 
+    today = date.today()
+    dateOfVisit = today.strftime('%d_%m_%Y')
     # Create a data dictionary for fillpdfs.write_fillable_pdf
+
     data_dict = {
-    'Job number': job_number,
-    'ID Card Serial No': gas_safe_license_no,
-    'Print name': fullname,
-    'Gas operative': position_held,
-    'Dateofvisit': '1',
-    'Name MrMrsMissMs': '',
-    'Address 1': jobAddress,
-    'Postcode_2': 'test',
-    'Tel No_2': telNo,
-    'Name MrMrsMissMs_2': landlordName,
-    'Address 1_2': ' ',
-    'Address 3_2': '',
-    'Postcode': ' ',
-    'Tel No': ' ',
-    'Number of appliances tested': ' ',
-    'Location1': appliLocation1,
-    'Appliance type1': appliType1,
-    'Make1': appliMake1,
-    'Model1': appliModel1,
-    'Landlords appliance YesNoNA1': landlordsAppi1,
-    'Landlords inspected YesNo1': landlordsInsp1,
-    'Flue Type OFRSFL1': flueType1,
-    'Location2': appliLocation2,
-    'Appliance type2': appliType2,
-    'Make2': appliMake2,
-    'Model2': appliModel2,
-    'Landlords appliance YesNoNA2': landlordsAppi2,
-    'Landlords inspected YesNo2': landlordsInsp2,
-    'Flue Type OFRSFL2': flueType2,
-    'Location3': appliLocation3,
-    'Appliance type3': appliType3,
-    'Make3': appliMake3,
-    'Model3': appliModel3,
-    'Landlords appliance YesNoNA3': landlordsAppi3,
-    'Landlords inspected YesNo3': landlordsInsp3,
-    'Flue Type OFRSFL3': flueType3,
-    'Location4': appliLocation4,
-    'Appliance type4': appliType4,
-    'Make4': appliMake4,
-    'Model4': appliModel4,
-    'Landlords appliance YesNoNA4': landlordsAppi4,
-    'Landlords inspected YesNo4': landlordsInsp4,
-    'Flue Type OFRSFL4': flueType4,
-    'Operating pressure in mbar or heat input inkW1': pressure1,
-    'Initial combustion analyser reading if applicable1': initCombustion1,
-    'Final combustion analyser reading if applicable1': finalCombustion1,
-    'Safety devices correct operation YesNoNA1': safetyDevice1,
-    'Ventilation provision satisfactory YesNo1': ventilationProv1,
-    'Visual condition of chimneytermination Satisfactory PassFailNA1': chimneyCond1,
-    'Flue performance checks PassFailNA1': flueCheck1,
-    'Appliance serviced YesNo1': applianceServiced1,
-    'Appliance safe to use YesNo1': applianceSafe1,
-    'Approved CO alarm fitted YesNoNARow1': approvedAlarm1,
-    'Is CO alarm in date YesNoNARow1': alarmInDate1,
-    'Testing of CO alarm satisfactory YesNoNARow1': alarmTest1,
-    'Operating pressure in mbar or heat input inkW2': pressure2,
-    'Initial combustion analyser reading if applicable2': initCombustion2,
-    'Final combustion analyser reading if applicable2': finalCombustion2,
-    'Safety devices correct operation YesNoNA2': safetyDevice2,
-    'Ventilation provision satisfactory YesNo2': ventilationProv2,
-    'Visual condition of chimneytermination Satisfactory PassFailNA2': chimneyCond2,
-    'Flue performance checks PassFailNA2': flueCheck2,
-    'Appliance serviced YesNo2': applianceServiced2,
-    'Appliance safe to use YesNo2': applianceSafe2,
-    'Approved CO alarm fitted YesNoNARow2': approvedAlarm2,
-    'Is CO alarm in date YesNoNARow2': alarmInDate2,
-    'Testing of CO alarm satisfactory YesNoNARow2': alarmTest2,
-    'Operating pressure in mbar or heat input inkW3': pressure3,
-    'Initial combustion analyser reading if applicable3': initCombustion3,
-    'Final combustion analyser reading if applicable3': finalCombustion3,
-    'Safety devices correct operation YesNoNA3': safetyDevice3,
-    'Ventilation provision satisfactory YesNo3': ventilationProv3,
-    'Visual condition of chimneytermination Satisfactory PassFailNA3': chimneyCond3,
-    'Flue performance checks PassFailNA3': flueCheck3,
-    'Appliance serviced YesNo3': applianceServiced3,
-    'Appliance safe to use YesNo3': applianceSafe3,
-    'Approved CO alarm fitted YesNoNARow3': approvedAlarm3,
-    'Is CO alarm in date YesNoNARow3': alarmInDate3,
-    'Testing of CO alarm satisfactory YesNoNARow3': alarmTest3,
-    'Operating pressure in mbar or heat input inkW4': pressure4,
-    'Initial combustion analyser reading if applicable4': initCombustion4,
-    'Final combustion analyser reading if applicable4': finalCombustion4,
-    'Safety devices correct operation YesNoNA4': safetyDevice4,
-    'Ventilation provision satisfactory YesNo4': ventilationProv4,
-    'Visual condition of chimneytermination Satisfactory PassFailNA4': chimneyCond4,
-    'Flue performance checks PassFailNA4': flueCheck4,
-    'Appliance serviced YesNo4': applianceServiced4,
-    'Appliance safe to use YesNo4': applianceSafe4,
-    'Approved CO alarm fitted YesNoNARow4': approvedAlarm4,
-    'Is CO alarm in date YesNoNARow4': alarmInDate4,
-    'Testing of CO alarm satisfactory YesNoNARow4': alarmTest4,
-    'Inspection1': inspectionDescription, 'WN1': warningSerial, 
-    'Details of remedials': remedialDescription,
-    'Gas installation pipework satisfactory visual inspection YesNo': visualInspection,
-    'undefined': emergencyControl, 
-    'undefined_2': gasTightness, 
-    'undefined_3': protectiveEquipment, 
-    'Print Name': 'ENAME1', 
-    'Received by Signed': 'RNAME2'
+    'Text8': jobNum,
+    'Text2': siteName, 
+    'Text3': siteAddress, 
+    'Text4': sitePostCode, 
+    'Text5': siteContact, 
+    'Text6': siteNum, 
+    'Text7': gas_safe_license_no, 
+    'Text9': fullName, 
+    'Text10': position_held, 
+    'Date11_af_date': dateOfVisit, 
+    'STRENGTH TEST DETAILSRow1': testMethod, 
+    'STRENGTH TEST DETAILSRow2': installation, 
+    'STRENGTH TEST DETAILSRow3': isolatedComp, 
+    'STRENGTH TEST DETAILSRow4': calcStrength, 
+    'STRENGTH TEST DETAILSRow5': testMedium, 
+    'STRENGTH TEST DETAILSRow6': stabilisationPeriod, 
+    'STRENGTH TEST DETAILSRow7': strengthTestDur, 
+    'STRENGTH TEST DETAILSRow8': permPressure, 
+    'STRENGTH TEST DETAILSRow9': calmPressure, 
+    'STRENGTH TEST DETAILSRow10': findings, 
+    'STRENGTH TEST DETAILSRow11': pressureDrop, 
+    'STRENGTH TEST DETAILSRow12': strengthPF, 
+    'TIGHTNESS TEST DETAILSRow1': gasType, 
+    'TIGHTNESS TEST DETAILSRow2': tightnessTestMethod, 
+    'TIGHTNESS TEST DETAILSRow3': weatherChange, 
+    'TIGHTNESS TEST DETAILSRow4': meterType, 
+    'TIGHTNESS TEST DETAILSRow5': meterDesignation, 
+    'TIGHTNESS TEST DETAILSRow6': meterBypass, 
+    'TIGHTNESS TEST DETAILSRow7': installationVolume, 
+    'TIGHTNESS TEST DETAILSRow8': installationPipework, 
+    'TIGHTNESS TEST DETAILSRow9': totalIV, 
+    'TIGHTNESS TEST DETAILSRow10': testMediumFGA, 
+    'TIGHTNESS TEST DETAILSRow11': tightnessTestPressure, 
+    'TIGHTNESS TEST DETAILSRow12': pressureGuageType, 
+    'TIGHTNESS TEST DETAILSRow13': maxLeak, 
+    'TIGHTNESS TEST DETAILSRow14': testPeriod, 
+    'TIGHTNESS TEST DETAILSRow15': stablePeriod, 
+    'TIGHTNESS TEST DETAILSRow16': tightnessTestDuration, 
+    'TIGHTNESS TEST DETAILSRow17': ventilatedAreas, 
+    'TIGHTNESS TEST DETAILSRow18': barometricPressure, 
+    'TIGHTNESS TEST DETAILSRow19': tightnessFindings, 
+    'TIGHTNESS TEST DETAILSRow20': pressureDropActual, 
+    'TIGHTNESS TEST DETAILSRow21': leakRateActual, 
+    'TIGHTNESS TEST DETAILSRow22': ventilatedAreasChecked, 
+    'TIGHTNESS TEST DETAILSRow23': tightnessPass, 
+    'PURGING PROCEDURE DETAILSRow1': riskAssessment, 
+    'PURGING PROCEDURE DETAILSRow2': purgeWriteUp, 
+    'PURGING PROCEDURE DETAILSRow3': noSmoking, 
+    'PURGING PROCEDURE DETAILSRow4': purgeAdvice, 
+    'PURGING PROCEDURE DETAILSRow5': valveLabeling, 
+    'PURGING PROCEDURE DETAILSRow6': nitrogenCheck, 
+    'PURGING PROCEDURE DETAILSRow7': extinguisherCheck, 
+    'PURGING PROCEDURE DETAILSRow8': radioCheck, 
+    'PURGING PROCEDURE DETAILSRow9': elecBondCheck, 
+    'PURGING PROCEDURE DETAILSRow10': calcPurgeVolume, 
+    'PURGING PROCEDURE DETAILSRow11': pipeworkFittingCheck, 
+    'PURGING PROCEDURE DETAILSRow12':  totalPurgeVolume,
+    'PURGING PROCEDURE DETAILSRow13': gasDeviceCheck, 
+    'FindingsRow1': purgeNoting, 
+    'FindingsRow2': purgePass, 
+    'Text1': remedialDescription, 
+    'ste test': strengthTest, 
+    'purge': purgeTest, 
+    'tightness test': tightnessTest, 
+    'Form given to': emailedTo, 
+    'Check Box21': '', 
+    'Check Box22': '', 
+    'Signature16': '', 
+    'Signature17': '', 
+    'Signature18': '', 
+    'Signature19': ''
 }
 
-
     # Update the PDF
-    pdf_path = r'C:\Users\Elias\Documents\GitHub\gasgate\gasgate\flask-server\CP12(DomesticServicing)Master.pdf'
-    output_pdf_path = 'updated.pdf'
+    pdf_path = '/home/ubuntu/bknd/pdfs/CP16/master/CP16(GasTightnessPurgingStrength)Master.pdf'
+    output_pdf_filename = f'CP16_{dateOfVisit}.pdf'
+    output_pdf_path = '/home/ubuntu/bknd/pdfs/CP16/updated/test.pdf'
 
     fillpdfs.write_fillable_pdf(pdf_path, output_pdf_path, data_dict)
-    fillpdfs.flatten_pdf(output_pdf_path, output_pdf_path)
+    """fillpdfs.flatten_pdf(output_pdf_path, output_pdf_path)"""
     
-    # Update the PDF
-    pdf_path = r'C:\Users\Elias\Documents\GitHub\gasgate\gasgate\flask-server\CP12(DomesticServicing)Master.pdf'
-    output_pdf_path = 'updated.pdf'
+    # Create a copy with the current date in the filenam
+    output_copy_path = os.path.join('/home/ubuntu/bknd/pdfs/CP16/updated', f'CP16_{dateOfVisit}.pdf')
 
-    fillpdfs.write_fillable_pdf(pdf_path, output_pdf_path, data_dict)
-    fillpdfs.flatten_pdf(output_pdf_path, output_pdf_path)
+    shutil.copy(output_pdf_path, output_copy_path)
 
+    
     # Return the file content
     with open(output_pdf_path, 'rb') as file:
         file_content = file.read()

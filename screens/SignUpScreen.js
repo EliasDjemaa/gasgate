@@ -52,9 +52,9 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-  behavior={Platform.OS === 'ios' ? 'padding' : null}
-  style={styles.container}
->
+    behavior={Platform.OS === 'ios' ? 'padding' : null}
+    style={styles.container}
+    >
     <View style={styles.container}>
         <TextInput
           style={styles.input}

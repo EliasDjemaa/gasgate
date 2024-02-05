@@ -90,19 +90,19 @@ export default function CP16({ navigation }) {
     };
 
     const toggleSiteDetailsContainerHeight = () => {
-        setSiteDetailsContainerHeight((prevHeight) => (prevHeight === 130 ? 330 : 130));
+        setSiteDetailsContainerHeight((prevHeight) => (prevHeight === 130 ? 400 : 130));
     };
 
     const toggleStrengthTestContainerHeight = () => {
-        setStrengthTestContainerHeight((prevHeight) => (prevHeight === 130 ? 800 : 130));
+        setStrengthTestContainerHeight((prevHeight) => (prevHeight === 130 ? 1300 : 130));
     };
 
     const toggleTightnessContainerHeight = () => {
-        setTightnessContainerHeight((prevHeight) => (prevHeight === 130 ? 1300 : 130));
+        setTightnessContainerHeight((prevHeight) => (prevHeight === 130 ? 1700 : 130));
     };
 
     const togglePurgingContainerHeight = () => {
-        setPurgingContainerHeight((prevHeight) => (prevHeight === 130 ? 1000 : 130));
+        setPurgingContainerHeight((prevHeight) => (prevHeight === 130 ? 1200 : 130));
     };
 
     const toggleFinalContainerHeight = () => {
@@ -317,7 +317,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Job Number:
@@ -331,7 +331,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Site Name:
@@ -345,7 +345,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Site Address:
@@ -359,7 +359,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Postcode:
@@ -373,7 +373,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Site Contact:
@@ -386,7 +386,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}
-                            {siteDetailsContainerHeight === 330 && (
+                            {siteDetailsContainerHeight === 400 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Contact Number:
@@ -419,7 +419,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         State test method: 
@@ -433,7 +433,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Installation :
@@ -447,7 +447,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Have components not suitable for strength testing been removed or isolated from installation as necessary:
@@ -461,7 +461,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Calculated strength test pressure (STP):
@@ -475,7 +475,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Test medium:
@@ -489,7 +489,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Stabilisation period:
@@ -502,7 +502,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Stabilisation period:
@@ -515,7 +515,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Strength test duration:
@@ -528,7 +528,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Permitted pressure drop:
@@ -541,7 +541,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Calculated pressure drop:
@@ -554,7 +554,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Findings:
@@ -567,7 +567,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Actual pressure drop:
@@ -580,7 +580,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {strengthTestContainerHeight === 800 && (
+                            {strengthTestContainerHeight === 1300 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Strength test:
@@ -613,7 +613,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Gas Type: 
@@ -627,7 +627,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Installation :
@@ -641,7 +641,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Could weather/changes in temperature affect test?:
@@ -655,7 +655,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Meter type:
@@ -669,7 +669,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Meter designation
@@ -683,7 +683,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Meter bypass installed?
@@ -696,7 +696,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Installation volume:
@@ -709,7 +709,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Installation pipework and fittings:
@@ -722,7 +722,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Total IV:
@@ -735,7 +735,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Test medium:
@@ -748,7 +748,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Tightness test pressure (TTP):
@@ -761,7 +761,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Pressure Gauge type:
@@ -774,7 +774,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Maximum permitted leak rate:
@@ -787,7 +787,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}    
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Let-by test period existing installations:
@@ -800,7 +800,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Stabilisation period:
@@ -813,7 +813,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Tightness test duration:
@@ -826,7 +826,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Any inadequate ventilated areas to check?
@@ -839,7 +839,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Is barometric pressure correction necessary?
@@ -852,7 +852,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Findings?
@@ -865,7 +865,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Actual pressure drop (if any) mbar?
@@ -878,7 +878,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Actual leak rate?
@@ -891,7 +891,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Have inadequetely ventilated areas been checked?
@@ -904,7 +904,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {tightnessContainerHeight === 1300 && (
+                            {tightnessContainerHeight === 1700 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Tightness test Pass or Fail?
@@ -938,7 +938,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Has a risk assessment been carried out?
@@ -952,7 +952,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Has a written procedure for the purge been prepared?
@@ -966,7 +966,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Have 'NO SMOKING' signs etc been displayed as necessary?
@@ -980,7 +980,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Have persons in the vacinity of the purge been advised accordingly?
@@ -994,7 +994,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Have all appropriate valves to and from the section of pipe been labelled?
@@ -1008,7 +1008,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Where Nitrogen gas is being used for an indirect purge have the gas cylinders been checked/verified for their correct content?
@@ -1021,7 +1021,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Are suitable fire extinguishers available in case of an incident?
@@ -1034,7 +1034,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Are two way radios (intrisically safe) available? 
@@ -1047,7 +1047,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Are all electrical bonds fitted as necessary?
@@ -1060,7 +1060,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Calculate purge volume Gas Meter:
@@ -1073,7 +1073,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Installation pipework and fittings:
@@ -1086,7 +1086,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}  
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Total purge volume 
@@ -1099,7 +1099,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Is gas detector/oxygen measuring device as appropriate intrinsically safe?
@@ -1112,7 +1112,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )}    
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Carry out purge noting final test criteria readings (O2% or LFL%)
@@ -1125,7 +1125,7 @@ const updateAndDownloadPdf = async () => {
                                     />
                                 </View>
                             )} 
-                            {purgingContainerHeight === 1000 && (
+                            {purgingContainerHeight === 1200 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                     Purge Pass or Fail?
@@ -1343,6 +1343,7 @@ const styles = StyleSheet.create({
         padding: 8,
         borderRadius: 8,
         width: 300,
+        marginTop: 3.
     },
     itemContainer: {
         paddingHorizontal: 20,

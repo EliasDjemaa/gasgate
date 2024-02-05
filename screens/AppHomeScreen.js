@@ -7,6 +7,13 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function AppHomeScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [pdfUrls, setPdfUrls] = useState([]);
+  const [completedPdfCount, setCompletedPdfCount] = useState(0);
+
+  useEffect(() => {
+    getCurrentUsername();
+    fetchPdfUrls();
+  }, []);
+
 
   useEffect(() => {
     // Fetch current username and PDF URLs when the component mounts
@@ -49,8 +56,10 @@ export default function AppHomeScreen({ navigation }) {
     }
   };
   const navigateToCertifSelection = () => {
-    // Navigate to CertifSelection.js
     navigation.navigate('CertifSelection');
+  };
+  const navigateToCompleted = () => {
+    navigation.navigate('Completed', { completedPdfCount });
   };
 
   return (
@@ -92,14 +101,14 @@ export default function AppHomeScreen({ navigation }) {
         {/* Second row */}
         <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
           {/* Completed */}
-          <TouchableOpacity>
+          <TouchableOpacity onPress={navigateToCompleted}>
             <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED'}]}>
               <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle3} name="file-check" size={20} color="rgba(23, 214, 119, 0.8)" />
               </View>
               <View style={styles.textContainer}>
                 <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>Completed</Text>
-                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>0 certificates</Text>
+                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>{completedPdfCount} certificates</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -120,14 +129,14 @@ export default function AppHomeScreen({ navigation }) {
         {/* Recent certificates */}
         <View style={{ marginHorizontal: 14, backgroundColor: '#ffedd5', borderRadius: 8, marginTop: 3 }}>
           <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 25 }}>
-            <Text style={{ fontSize: wp(5), fontWeight: '600', color: 'black', marginTop: 14 }}>Recent Certificates</Text>
-            <Text style={{ fontSize: wp(4), fontWeight: 'normal', color: 'black', marginTop: 7, textAlign: 'left' }}>Here are all the recent requested and completed certificates.</Text>
+            <Text style={{ fontSize: wp(5), fontWeight: '600', color: 'black', marginTop: 14 }}>Requests</Text>
+            <Text style={{ fontSize: wp(4), fontWeight: 'normal', color: 'black', marginTop: 7, textAlign: 'left' }}>Here are all the recent requested certificates.</Text>
           </View>
 
           {pdfUrls.map((pdfUrl, index) => (
             <TouchableOpacity key={index} onPress={() => openPdfInBrowser(pdfUrl)}>
               <View style={styles.pdfCard}>
-                <Text style={styles.pdfCardText}>{`CP12_${index + 1}`}</Text>
+                <Text style={styles.pdfCardText}>{`CP12`}</Text>
               </View>
             </TouchableOpacity>
           ))}
