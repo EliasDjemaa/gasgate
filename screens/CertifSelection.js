@@ -13,11 +13,12 @@ export default function CertifSelection({ navigation }) {
     };
 
     const navigateToCP12 = () => {
-        // Navigate to cp12.js
         navigation.navigate('CP12');
     };
+    const navigateToCP16 = () => {
+        navigation.navigate('CP16');
+    };
     const navigateToAladin = () => {
-        // Navigate to cp12.js
         navigation.navigate('C12Screen');
     };
 
@@ -34,16 +35,21 @@ export default function CertifSelection({ navigation }) {
                     </TouchableOpacity>
                     {/* HEADER-TEXT */}
                     <View style={styles.headerTextWrapper}>
-                        <Text style={[styles.headerTextContainer, { fontSize: wp(3), fontWeight: 'bold', color: 'black', marginLeft: 120, backgroundColor: '#7dd3fc' }]}>Certificate selection</Text>
+                            <View style={styles.iconWrapper}>
+                                <MaterialCommunityIcons name="alert-box-outline" size={20} color="black" />
+                            </View>
+                        <View style={styles.textWrapper}>
+                            <Text style={styles.headerText}>Please select a certificate type</Text>
+                        </View>
                     </View>
                     
                 </View>
 
                 {/* CP12 */}
                 <TouchableOpacity onPress={navigateToCP12}>
-                    <View style={[styles.cardContainer, { backgroundColor: '#f5f5f4' }]} >
-                    <View style={[styles.iconContainer, { backgroundColor: '#e2e8f0' }]}>
-                        <MaterialCommunityIcons name="file" size={24} color="black"/>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP12</Text>
@@ -53,9 +59,9 @@ export default function CertifSelection({ navigation }) {
                 </TouchableOpacity>
                 {/* CP14 */}
                 <TouchableOpacity onPress={navigateToAladin}>
-                    <View style={[styles.cardContainer, { backgroundColor: '#f5f5f4' }]} >
-                    <View style={[styles.iconContainer, { backgroundColor: '#e2e8f0' }]}>
-                        <MaterialCommunityIcons name="file" size={24} color="black"/>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP14</Text>
@@ -65,9 +71,9 @@ export default function CertifSelection({ navigation }) {
                 </TouchableOpacity>
                 {/* CP15 */}
                 <TouchableOpacity>
-                    <View style={[styles.cardContainer, { backgroundColor: '#f5f5f4' }]} >
-                    <View style={[styles.iconContainer, { backgroundColor: '#e2e8f0' }]}>
-                        <MaterialCommunityIcons name="file" size={24} color="black"/>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP15</Text>
@@ -76,10 +82,10 @@ export default function CertifSelection({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 {/* CP16 */}
-                <TouchableOpacity>
-                    <View style={[styles.cardContainer, { backgroundColor: '#f5f5f4' }]} >
-                    <View style={[styles.iconContainer, { backgroundColor: '#e2e8f0' }]}>
-                        <MaterialCommunityIcons name="file" size={24} color="black"/>
+                <TouchableOpacity onPress={navigateToCP16}>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP16</Text>
@@ -89,9 +95,9 @@ export default function CertifSelection({ navigation }) {
                 </TouchableOpacity>
                 {/* CP17 */}
                 <TouchableOpacity>
-                    <View style={[styles.cardContainer, { backgroundColor: '#f5f5f4' }]} >
-                    <View style={[styles.iconContainer, { backgroundColor: '#e2e8f0' }]}>
-                        <MaterialCommunityIcons name="file" size={24} color="black"/>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP17</Text>
@@ -105,6 +111,29 @@ export default function CertifSelection({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    headerTextWrapper: {
+        flexDirection: 'row',
+        alignItems: 'left',
+        borderRadius: 8,
+        overflow: 'hidden',
+        backgroundColor: '#FFF4D8',
+        width: 260,
+      },
+      iconWrapper: {
+        padding: 10,
+        width: 40,
+      },
+      textWrapper: {
+        flex: 1, 
+        paddingTop: 3,
+
+      },
+      headerText: {
+        fontSize: wp(3),
+        fontWeight: 'normal',
+        color: 'black',
+        padding: 10,
+      },
     cardContainer: {
         marginRight: 5,
         marginLeft: 14,
@@ -123,21 +152,27 @@ const styles = StyleSheet.create({
         
     },
     headerTextContainer: {
-        marginLeft: 10,
         borderRadius: 8,
         padding: 10,
 
     },
     iconContainer: {
-        backgroundColor: '#e2e8f0',
-        borderRadius: 10,  // Make it a circle
-        padding: 6,       // Adjust padding for the circle background
-        marginRight: 10,   // Add margin to separate the icon from text
-    },
-    headerTextWrapper: {
-        marginLeft: 60,
-        borderRadius: 8,
-        overflow: 'hidden', // This is important for the borderRadius to take effect
-        width: 260,
-    },
+        backgroundColor: '#FFFFFF',
+        borderRadius: 10,
+        padding: 6,
+        marginRight: 10,
+        borderColor: '#EBEBED', 
+        borderWidth: 2,     
+    
+      },
+    materialIconStyle1: {
+        shadowColor: 'rgba(117, 119, 230, 1)',
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.8,
+        shadowRadius: 10,
+        elevation: 5,
+      },
 });

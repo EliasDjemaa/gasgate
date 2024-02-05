@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Alert} from 'react-native';
 import axios from 'axios';
 
 const SignUpScreen = ({ navigation }) => {
@@ -16,14 +16,28 @@ const SignUpScreen = ({ navigation }) => {
         username,
         email,
         password,
-        gasSafeLicenseNo, // Include new field
-        positionHeld, // Include new field
+        gasSafeLicenseNo,
+        positionHeld,
       });
-
+  
       console.log('Signup successful:', response.data);
-
-      // Optionally, navigate to another screen if needed
-      // navigation.navigate('NextScreen');
+  
+      // Display a native iOS pop-up notification
+      Alert.alert(
+        'Success',
+        'Account successfully created!',
+        [
+          {
+            text: 'OK',
+            onPress: () => {
+              // Navigate to the sign-in screen or any other screen
+              navigation.navigate('SignIn');
+            },
+          },
+        ],
+        { cancelable: false }
+      );
+  
     } catch (error) {
       console.error('Error during signup:', error.message);
     }
@@ -37,17 +51,18 @@ const SignUpScreen = ({ navigation }) => {
   const passwordsMatch = password === confirmPassword;
 
   return (
+    <KeyboardAvoidingView
+  behavior={Platform.OS === 'ios' ? 'padding' : null}
+  style={styles.container}
+>
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Full name"
           value={username}
           onChangeText={(text) => setUsername(text)}
         />
-      </View>
 
-      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -55,27 +70,21 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setEmail(text)}
           keyboardType="email-address"
         />
-      </View>
 
-      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Gas Safe License No"
           value={gasSafeLicenseNo}
           onChangeText={(text) => setGasSafeLicenseNo(text)}
         />
-      </View>
 
-      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Position Held"
           value={positionHeld}
           onChangeText={(text) => setPositionHeld(text)}
         />
-      </View>
 
-      <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Password"
@@ -83,9 +92,8 @@ const SignUpScreen = ({ navigation }) => {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-      </View>
 
-      <View style={styles.inputContainer}>
+
         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
@@ -93,7 +101,6 @@ const SignUpScreen = ({ navigation }) => {
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
         />
-      </View>
 
       {!passwordsMatch && (
         <Text style={styles.errorText}>
@@ -103,12 +110,13 @@ const SignUpScreen = ({ navigation }) => {
 
       <TouchableOpacity
         onPress={handleSignUp}
-        style={[styles.button, { backgroundColor: passwordsMatch && validatePassword() ? 'blue' : 'gray' }]}
+        style={[styles.button, { backgroundColor: passwordsMatch && validatePassword() ? 'black' : 'gray' }]}
         disabled={!passwordsMatch || !validatePassword()}
       >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -117,27 +125,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  inputContainer: {
-    width: 300,
-    marginBottom: 10,
-    alignSelf: 'stretch',
-    marginLeft: 10,
+    backgroundColor: 'white',
   },
   input: {
     height: 40,
+    width: 330,
     borderColor: 'gray',
     borderWidth: 1,
+    marginBottom: 10,
     paddingHorizontal: 10,
-    alignSelf: 'stretch',
+    borderRadius: 5,
   },
   errorText: {
     color: 'red',
     marginBottom: 10,
   },
   button: {
-    width: 300,
-    padding: 10,
+    width: 330,
+    padding: 20,
     borderRadius: 5,
     marginBottom: 10,
   },

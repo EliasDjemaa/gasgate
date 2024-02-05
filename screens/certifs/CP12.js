@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TextInput, Linking, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TextInput, Linking, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -12,6 +12,7 @@ import axios from 'axios';
 export default function CP12({ navigation }) {
     const [activeSlide, setActiveSlide] = useState(0);
     const [jobAddressContainerHeight, setJobAddressContainerHeight] = useState(130);
+    const [landlordContainerHeight, setLandlordContainerHeight] = useState(130);
     const [applianceDetailContainerHeight, setApplianceDetailContainerHeight] = useState(130);
     const [inspectionDetailContainerHeight, setInspectionDetailContainerHeight] = useState(130);
     const [audibleContainerHeight, setAudibleContainerHeight] = useState(130);
@@ -20,8 +21,15 @@ export default function CP12({ navigation }) {
     const [finalContainerHeight, setFinalContainerHeight] = useState(130);
 
     const [jobAddress, setJobAddress] = useState('');
+    const [jobPostCode, setJobPostCode] = useState('');
     const [jobNum, setJobNum] = useState('');
     const [jobTele, setJobTele] = useState('');
+
+    const [landlordName, setLandlordName] = useState('');
+    const [landLordAddress, setLandlordAddress] = useState('');
+    const [landLordPostcode, setLandlordPostcode] = useState('');
+    const [landLordNum, setLandlordNum] = useState('');
+    const [landLordNAT, setLandlordNAT] = useState('');
 
     const [appliLocation1, setAppliLocation1] = useState('');
     const [appliType1, setAppliType1] = useState('');
@@ -128,7 +136,11 @@ export default function CP12({ navigation }) {
     };
 
     const toggleJobAddressContainerHeight = () => {
-        setJobAddressContainerHeight((prevHeight) => (prevHeight === 130 ? 220 : 130));
+        setJobAddressContainerHeight((prevHeight) => (prevHeight === 130 ? 250 : 130));
+    };
+
+    const toggleLandlordContainerHeight = () => {
+        setLandlordContainerHeight((prevHeight) => (prevHeight === 130 ? 280 : 130));
     };
 
     const toggleApplianceDetailContainerHeight = () => {
@@ -166,7 +178,7 @@ export default function CP12({ navigation }) {
         borderRadius: 8,
         width: 340,
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#EBEBED',
         shadowColor: "#000",
     });
 
@@ -370,6 +382,10 @@ export default function CP12({ navigation }) {
 
 
     const renderItem = ({ item }) => (
+        <KeyboardAvoidingView
+    behavior={Platform.OS === 'ios' ? 'padding' : null}
+    style={styles.container}
+    >
         <View style={{ paddingBottom: 20, flexDirection: 'column', marginBottom: 10,}}>
             <View>
                 <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>Appliance Location:</Text>
@@ -435,6 +451,7 @@ export default function CP12({ navigation }) {
                 />
             </View>
         </View>
+        </KeyboardAvoidingView>
     );
 
     
@@ -581,7 +598,13 @@ export default function CP12({ navigation }) {
     const dataToSend = {
         jobNum,
         jobAddress,
+        jobPostCode,
         jobTele,
+        landlordName,
+        landLordAddress,
+        landLordPostcode,
+        landLordNum,
+        landLordNAT,
         appliLocation1,
         appliType1,
         appliMake1,
@@ -717,6 +740,17 @@ const updateAndDownloadPdf = async () => {
     }
   };
 
+  const iconGlow = {
+        shadowColor: 'rgba(23, 214, 119, 0.8)',
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 1, 
+        shadowRadius: 10,
+        elevation: 5, 
+  };
+
 
 
     return (
@@ -730,20 +764,24 @@ const updateAndDownloadPdf = async () => {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.headerTextWrapper}>
-                        <Text style={styles.headerText}>CP12: In Progress</Text>
+                            <View style={styles.iconWrapper}>
+                                <MaterialCommunityIcons name="alert-box-outline" size={20} color="black" />
+                            </View>
+                        <View style={styles.textWrapper}>
+                            <Text style={styles.headerText}>Press on a section to reveal questions</Text>
+                        </View>
                     </View>
                 </View>
 
                 {/* CHECKLIST */}
                 <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 25 }}>
-                    <Text style={{ fontSize: wp(5), fontWeight: 'bold', color: 'black', marginTop: 20 }}>Checklist </Text>
 
                     {/* JOB ADDRESS CHECKLIST CONTAINER*/}
                     <TouchableOpacity onPress={toggleJobAddressContainerHeight}>
                         <View style={[cardContainerStyle(jobAddressContainerHeight), { backgroundColor: 'white', height: jobAddressContainerHeight }]}>
                             {jobAddressContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={iconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -755,7 +793,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {jobAddressContainerHeight === 220 && (
+                            {jobAddressContainerHeight === 250 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Job Number:
@@ -769,7 +807,7 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {jobAddressContainerHeight === 220 && (
+                            {jobAddressContainerHeight === 250 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Job Address:
@@ -783,7 +821,21 @@ const updateAndDownloadPdf = async () => {
                                 </View>
                             )}
 
-                            {jobAddressContainerHeight === 220 && (
+                            {jobAddressContainerHeight === 250 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Postcode:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Postcode..."
+                                        value={jobPostCode}
+                                        onChangeText={(text) => setJobPostCode(text)}
+                                    />
+                                </View>
+                            )}
+
+                            {jobAddressContainerHeight === 250 && (
                                 <View style={styles.textInputContainer}>
                                     <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
                                         Telephone:
@@ -799,12 +851,101 @@ const updateAndDownloadPdf = async () => {
                         </View>
                     </TouchableOpacity>
 
+                    {/* LANDLORD DETAILS CHECKLIST CONTAINER*/}
+                    <TouchableOpacity onPress={toggleLandlordContainerHeight}>
+                        <View style={[cardContainerStyle(landlordContainerHeight), { backgroundColor: 'white', height: landlordContainerHeight }]}>
+                            {landlordContainerHeight === 130 && (
+                                <View style={[styles.checkListIcon]}>
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 130 && (
+                                <View style={{ flex: 1 }}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Landlord Details
+                                    </Text>
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 280 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Landlord Name:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Name..."
+                                        value={landlordName}
+                                        onChangeText={(text) => setLandlordName(text)}
+                                    />
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 280 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Landlord Address:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Address..."
+                                        value={landLordAddress}
+                                        onChangeText={(text) => setLandlordAddress(text)}
+                                    />
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 280 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Postcode:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Postcode..."
+                                        value={landLordPostcode}
+                                        onChangeText={(text) => setLandlordPostcode(text)}
+                                    />
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 280 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Telephone:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Number..."
+                                        value={landLordNum}
+                                        onChangeText={(text) => setLandlordNum(text)}
+                                    />
+                                </View>
+                            )}
+
+                            {landlordContainerHeight === 280 && (
+                                <View style={styles.textInputContainer}>
+                                    <Text style={{ fontSize: wp(3), fontWeight: '600', color: 'black', marginTop: 2 }}>
+                                        Number Of Appliances Tested:
+                                    </Text>
+                                    <TextInput
+                                        style={styles.textInput}
+                                        placeholder="Enter Amount..."
+                                        value={landLordNAT}
+                                        onChangeText={(text) => setLandlordNAT(text)}
+                                    />
+                                </View>
+                            )}  
+                        </View>
+                    </TouchableOpacity>
+
                     {/* APPLIANCE DETAILS CHECKLIST CONTAINER with Carousel */}
                     <TouchableOpacity onPress={toggleApplianceDetailContainerHeight}>
                         <View style={[cardContainerStyle(applianceDetailContainerHeight), { backgroundColor: 'white', height: applianceDetailContainerHeight }]}>
                             {applianceDetailContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -856,7 +997,7 @@ const updateAndDownloadPdf = async () => {
                         <View style={[cardContainerStyle(inspectionDetailContainerHeight), { backgroundColor: 'white', height: inspectionDetailContainerHeight }]}>
                             {inspectionDetailContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -908,7 +1049,7 @@ const updateAndDownloadPdf = async () => {
                         <View style={[cardContainerStyle(audibleContainerHeight), { backgroundColor: 'white', height: audibleContainerHeight }]}>
                             {audibleContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 1)" />
                                 </View>
                             )}
 
@@ -961,7 +1102,7 @@ const updateAndDownloadPdf = async () => {
                         <View style={[cardContainerStyle(inspectionContainerHeight), { backgroundColor: 'white', height: inspectionContainerHeight }]}>
                             {inspectionContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -1008,7 +1149,7 @@ const updateAndDownloadPdf = async () => {
                         <View style={[cardContainerStyle(remedialContainerHeight), { backgroundColor: 'white', height: remedialContainerHeight }]}>
                             {remedialContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -1041,7 +1182,7 @@ const updateAndDownloadPdf = async () => {
                         <View style={[cardContainerStyle(finalContainerHeight), { backgroundColor: 'white', height: finalContainerHeight }]}>
                             {finalContainerHeight === 130 && (
                                 <View style={[styles.checkListIcon]}>
-                                    <MaterialCommunityIcons name="check" size={24} color="black" />
+                                    <MaterialCommunityIcons style={styles.tickIconGlow} name="check" size={28} color="rgba(23, 214, 119, 0.8)" />
                                 </View>
                             )}
 
@@ -1118,13 +1259,14 @@ const updateAndDownloadPdf = async () => {
                     <TouchableOpacity
                         style={{
                         marginTop: 20,
-                        padding: 10,
-                        backgroundColor: 'blue',
+                        padding: 20,
+                        backgroundColor: '#7dd3fc',
                         borderRadius: 5,
+                        width: 340,
                         }}
                         onPress={updateAndDownloadPdf}
                     >
-                        <Text style={{ color: 'white' }}>Update and Download PDF</Text>
+                        <Text style={{ color: 'black' , textAlign: 'center',}}>Update and Download PDF</Text>
                     </TouchableOpacity>
 
 
@@ -1145,35 +1287,55 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         width: 340,
         borderWidth: 1,
-        borderColor: 'black',
-        shadowColor: "#000",
-        
-    },
+        borderColor: '#EBEBED',
+        shadowColor: 'rgba(0, 0, 0, 1)',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 1, 
+        shadowRadius: 4,
+      },
+    headerTextWrapper: {
+        flexDirection: 'row',
+        alignItems: 'left',
+        borderRadius: 8,
+        overflow: 'hidden',
+        backgroundColor: '#FFF4D8',
+        width: 260,
+      },
+      iconWrapper: {
+        padding: 10,
+        width: 40,
+        paddingTop: 16,
+      },
+      textWrapper: {
+        flex: 1, 
+        paddingTop: 3,
+
+      },
+      headerText: {
+        fontSize: wp(3),
+        fontWeight: 'normal',
+        color: 'black',
+        padding: 10,
+      },
     iconContainer: {
-        backgroundColor: '#e2e8f0',
+        backgroundColor: '#FFFFFF',
         borderRadius: 10,
         padding: 6,
         marginRight: 10,
-    },
+        borderColor: '#EBEBED', 
+        borderWidth: 2,     
+    
+      },
     checkListIcon: {
-        backgroundColor: '#7dd3fc',
+        backgroundColor: 'white',
         borderRadius: 10,
         padding: 6,
         marginRight: 10,
         borderWidth: 1,
-        borderColor: 'black',
-    },
-    headerTextWrapper: {
-        marginLeft: 140,
-        borderRadius: 8,
-        overflow: 'hidden',
-    },
-    headerText: {
-        fontSize: wp(3),
-        fontWeight: 'bold',
-        color: 'white',
-        padding: 10,
-        backgroundColor: '#ea580c',
+        borderColor: '#EBEBED',
     },
     textInputContainer: {
         flex: 1,
@@ -1187,7 +1349,7 @@ const styles = StyleSheet.create({
         color: 'black',
         marginTop: 2,
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#EBEBED',
         padding: 8,
         borderRadius: 8,
         width: 300,
@@ -1210,20 +1372,32 @@ const styles = StyleSheet.create({
         color: 'black',
         marginTop: 2,
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#EBEBED',
         padding: 8,
         borderRadius: 8,
         width: 300,
     },
     submitButton: {
-        backgroundColor: 'green',
-        paddingVertical: 10,
+        backgroundColor: 'black',
+        paddingVertical: 20,
         borderRadius: 5,
         marginTop: 10,
+        width: 340,
       },
       submitButtonText: {
         color: 'white',
         fontSize: 16,
         textAlign: 'center',
+      },
+
+      tickIconGlow: {
+        shadowColor: 'rgba(23, 214, 119, 0.8)',
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.8, 
+        shadowRadius: 10,
+        elevation: 5, 
       },
 });
