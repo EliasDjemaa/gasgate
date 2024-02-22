@@ -15,11 +15,20 @@ export default function CertifSelection({ navigation }) {
     const navigateToCP12 = () => {
         navigation.navigate('CP12');
     };
+    const navigateToCP15 = () => {
+        navigation.navigate('CP15');
+    };
     const navigateToCP16 = () => {
         navigation.navigate('CP16');
     };
+    const navigateToCP17 = () => {
+        navigation.navigate('CP17');
+    };
     const navigateToAladin = () => {
         navigation.navigate('C12Screen');
+    };
+    const navigateToBarcode = () => {
+        navigation.navigate('QRScanner');
     };
 
     return (
@@ -70,7 +79,7 @@ export default function CertifSelection({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 {/* CP15 */}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={navigateToCP15}>
                     <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
@@ -94,7 +103,7 @@ export default function CertifSelection({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 {/* CP17 */}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={navigateToCP17}>
                     <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
@@ -102,6 +111,18 @@ export default function CertifSelection({ navigation }) {
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>CP17</Text>
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Breakdown</Text>
+                    </View>
+                    </View>
+                </TouchableOpacity>
+                {/* CP17 */}
+                <TouchableOpacity onPress={navigateToBarcode}>
+                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                    <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+                        <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>Import readings</Text>
+                        <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Scan and import reading from your testo</Text>
                     </View>
                     </View>
                 </TouchableOpacity>

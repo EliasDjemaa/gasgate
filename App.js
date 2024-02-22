@@ -7,9 +7,13 @@ import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import AppHomeScreen from './screens/AppHomeScreen';
 import CP12 from './screens/certifs/CP12';
+import CP15 from './screens/certifs/CP15';
 import CP16 from './screens/certifs/CP16';
-import CertifSelection from './screens/CertifSelection'; 
+import CP17 from './screens/certifs/CP17';
+import Requested from './screens/requested/Requested';
+import CertifSelection from './screens/CertifSelection';  
 import Completed from './screens/Completed'; 
+import QRScannerScreen from './screens/QRScannerScreen'; 
 import { NativeWindStyleSheet } from 'nativewind';
 
 NativeWindStyleSheet.setOutput({
@@ -43,6 +47,11 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="Requested"
+          component={Requested}  // Add the CertifSelection component
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="CertifSelection"
           component={CertifSelection}  // Add the CertifSelection component
           options={{ headerShown: false }}
@@ -58,8 +67,23 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="CP15"
+          component={CP15}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="CP16"
           component={CP16}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CP17"
+          component={CP17}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="QRScanner"
+          component={QRScannerScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

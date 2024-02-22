@@ -124,21 +124,6 @@ export default function CP16({ navigation }) {
         shadowColor: "#000",
     });
 
-    const openPdfInBrowser = async () => {
-        try {
-            const response = await axios.get('http://51.21.134.104:5000/get-pdf-url/');
-            const { file_url } = response.data;
-    
-            // Use React Native's Linking.openURL with the full URL
-            const publicUrl = `http://51.21.134.104:5000${file_url}`;
-            
-            // Open the PDF URL in the user's default browser
-            await Linking.openURL(publicUrl);
-        } catch (error) {
-            console.error('Error fetching or opening PDF URL:', error);
-        }
-    };
-
 
     // Function to handle back end sending of data
     const sendCP16Data = async () => {
@@ -395,7 +380,7 @@ const updateAndDownloadPdf = async () => {
                                         style={styles.textInput}
                                         placeholder="Enter Number..."
                                         value={siteNum}
-                                        onChangeText={(text) => siteNum(text)}
+                                        onChangeText={(text) => setSiteNum(text)}
                                     />
                                 </View>
                             )}

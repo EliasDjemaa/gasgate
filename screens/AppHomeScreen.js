@@ -6,18 +6,13 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function AppHomeScreen({ navigation }) {
   const [username, setUsername] = useState('');
-  const [pdfUrls, setPdfUrls] = useState([]);
+  const [requestedCertificates, setRequestedCertificates] = useState([]);
   const [completedPdfCount, setCompletedPdfCount] = useState(0);
 
+  
   useEffect(() => {
     getCurrentUsername();
-    fetchPdfUrls();
-  }, []);
-
-
-  useEffect(() => {
-    // Fetch current username and PDF URLs when the component mounts
-    getCurrentUsername();
+    fetchRequestedCertificates();
     fetchPdfUrls();
   }, []);
 
@@ -31,35 +26,59 @@ export default function AppHomeScreen({ navigation }) {
     }
   };
 
+  const fetchRequestedCertificates = async () => {
+    try {
+      const response = await axios.get('http://51.21.134.104/fetch_requested_certs');
+      const { certificates } = response.data;
+      setRequestedCertificates(certificates);
+    } catch (error) {
+      console.error('Error fetching requested certificates:', error);
+    }
+  };
+
   const fetchPdfUrls = async () => {
     try {
       const response = await axios.get('http://51.21.134.104/cp12_pdfs');
       const { pdf_urls } = response.data;
-      setPdfUrls(pdf_urls);
+      // Assuming you have logic to set completedPdfCount based on fetched pdf_urls
+      setCompletedPdfCount(pdf_urls.length);
     } catch (error) {
       console.error('Error fetching PDF URLs:', error);
     }
   };
 
-  const openPdfInBrowser = async (pdfUrl) => {
-    try {
-      const response = await axios.post('http://51.21.134.104/request_recents', { pdfUrl });
-      const { granted } = response.data;
-  
-      if (granted) {
-        await Linking.openURL(pdfUrl);
-      } else {
-        console.warn('Access not granted');
-      }
-    } catch (error) {
-      console.error('Error requesting access:', error);
-    }
-  };
   const navigateToCertifSelection = () => {
     navigation.navigate('CertifSelection');
   };
+
+  const navigateToRequested = () => {
+    navigation.navigate('Requested');
+  };
+
   const navigateToCompleted = () => {
     navigation.navigate('Completed', { completedPdfCount });
+  };
+
+  const navigateToScreen = (certificateType) => {
+    switch (certificateType) {
+      case 'CP12':
+        navigation.navigate('CP12');
+        break;
+      case 'CP14':
+        navigation.navigate('CP14');
+        break;
+      case 'CP15':
+        navigation.navigate('CP15');
+        break;
+      case 'CP16':
+        navigation.navigate('CP16');
+        break;
+      case 'CP17':
+        navigation.navigate('CP17');
+        break;
+      default:
+        console.warn(`No screen defined for certificate type: ${certificateType}`);
+    }
   };
 
   return (
@@ -74,25 +93,25 @@ export default function AppHomeScreen({ navigation }) {
         <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
           {/* Write */}
           <TouchableOpacity onPress={navigateToCertifSelection}>
-            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED',}]} >
+            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED',}]}>
               <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
               </View>
               <View style={styles.textContainer}>
                 <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>Write</Text>
-                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>4 certificates</Text>
+                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>5 certificates</Text>
               </View>
             </View>
           </TouchableOpacity>
           {/* Requested */}
-          <TouchableOpacity>
+          <TouchableOpacity onPress={navigateToRequested}>
             <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED'}]}>
               <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle2} name="file-question" size={20} color="rgba(246, 171, 31, 0.8)" />
               </View>
               <View style={styles.textContainer}>
                 <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>Requested</Text>
-                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>0 certificates</Text>
+                <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>{requestedCertificates.length} certificates</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -126,17 +145,16 @@ export default function AppHomeScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        {/* Recent certificates */}
+        {/* Recent REQUESTED certificates */}
         <View style={{ marginHorizontal: 14, backgroundColor: '#ffedd5', borderRadius: 8, marginTop: 3 }}>
           <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 25 }}>
             <Text style={{ fontSize: wp(5), fontWeight: '600', color: 'black', marginTop: 14 }}>Requests</Text>
             <Text style={{ fontSize: wp(4), fontWeight: 'normal', color: 'black', marginTop: 7, textAlign: 'left' }}>Here are all the recent requested certificates.</Text>
           </View>
-
-          {pdfUrls.map((pdfUrl, index) => (
-            <TouchableOpacity key={index} onPress={() => openPdfInBrowser(pdfUrl)}>
-              <View style={styles.pdfCard}>
-                <Text style={styles.pdfCardText}>{`CP12`}</Text>
+          {requestedCertificates.map((certificate, index) => (
+            <TouchableOpacity key={index} onPress={() => navigateToScreen(certificate.type)}>
+              <View style={styles.certificateCard}>
+                <Text style={styles.certificateText}>{certificate.certificate_type} - Job Number: {certificate.jobId}</Text>
               </View>
             </TouchableOpacity>
           ))}
@@ -214,7 +232,6 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5, 
   },
-
   materialIconStyle4: {
     shadowColor: 'rgba(244, 85, 82, 1)',
     shadowOffset: {
@@ -224,5 +241,36 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8, 
     shadowRadius: 10,
     elevation: 5, 
+  },
+  certificateCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: 'white',
+    marginHorizontal: 30,
+    marginBottom: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  certificateText: {
+    fontSize: wp(4),
+    fontWeight: 'normal',
+    color: 'black',
+    marginLeft: 10,
+  },
+  certificateCard: {
+    backgroundColor: 'white',
+    padding: 15,
+    marginHorizontal: 10,
+    marginBottom: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  certificateText: {
+    fontSize: wp(4),
+    fontWeight: 'normal',
+    color: 'black',
   },
 });

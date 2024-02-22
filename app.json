@@ -2,8 +2,8 @@
   "expo": {
     "name": "gasgate",
     "slug": "gasgate",
-    "version": "1.0.3",
-    "buildNumber": "4",
+    "version": "1.0.9",
+    "buildNumber": "10",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
