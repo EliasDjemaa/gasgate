@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import axios from 'axios';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
+
+const { width } = Dimensions.get('window');
+const buttonWidth = width - 28;
 
 export default function CertifSelection({ navigation }) {
 
     const navigateToHome = () => {
-        // Navigate to home.js
         navigation.navigate('AppHome');
     };
 
@@ -55,8 +57,8 @@ export default function CertifSelection({ navigation }) {
                 </View>
 
                 {/* CP12 */}
-                <TouchableOpacity onPress={navigateToCP12}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToCP12}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -65,10 +67,10 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Domestic Servicing</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
                 {/* CP14 */}
-                <TouchableOpacity onPress={navigateToAladin}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToAladin}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -77,10 +79,10 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Warning Notice</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
                 {/* CP15 */}
-                <TouchableOpacity onPress={navigateToCP15}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToCP15}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -89,10 +91,10 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Commerical Servicing</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
                 {/* CP16 */}
-                <TouchableOpacity onPress={navigateToCP16}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToCP16}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -101,10 +103,10 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Gas Tightness-Purging-Strength</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
                 {/* CP17 */}
-                <TouchableOpacity onPress={navigateToCP17}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToCP17}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -113,10 +115,10 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Breakdown</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
                 {/* CP17 */}
-                <TouchableOpacity onPress={navigateToBarcode}>
-                    <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]} >
+                <GestureHandlerTouchableOpacity onPress={navigateToBarcode}>
+                    <View style={[styles.cardContainer, { width: buttonWidth }]} >
                     <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
                         <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
                     </View>
@@ -125,7 +127,7 @@ export default function CertifSelection({ navigation }) {
                         <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: 'black', marginTop: 5 }}>Scan and import reading from your testo</Text>
                     </View>
                     </View>
-                </TouchableOpacity>
+                </GestureHandlerTouchableOpacity>
             </ScrollView>
         </SafeAreaView>
     )
@@ -139,22 +141,22 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: '#FFF4D8',
         width: 260,
-      },
-      iconWrapper: {
+    },
+    iconWrapper: {
         padding: 10,
         width: 40,
-      },
-      textWrapper: {
+    },
+    textWrapper: {
         flex: 1, 
         paddingTop: 3,
 
-      },
-      headerText: {
+    },
+    headerText: {
         fontSize: wp(3),
         fontWeight: 'normal',
         color: 'black',
         padding: 10,
-      },
+    },
     cardContainer: {
         marginRight: 5,
         marginLeft: 14,
@@ -163,7 +165,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 13,
         borderRadius: 8,
-        width: 350,
     },
     textContainer: {
         marginLeft: 10,
@@ -185,15 +186,15 @@ const styles = StyleSheet.create({
         borderColor: '#EBEBED', 
         borderWidth: 2,     
     
-      },
+    },
     materialIconStyle1: {
         shadowColor: 'rgba(117, 119, 230, 1)',
         shadowOffset: {
-          width: 0,
-          height: 0,
+            width: 0,
+            height: 0,
         },
         shadowOpacity: 0.8,
         shadowRadius: 10,
         elevation: 5,
-      },
+    },
 });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Alert} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import axios from 'axios';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -19,9 +20,9 @@ const SignUpScreen = ({ navigation }) => {
         gasSafeLicenseNo,
         positionHeld,
       });
-  
+
       console.log('Signup successful:', response.data);
-  
+
       // Display a native iOS pop-up notification
       Alert.alert(
         'Success',
@@ -37,7 +38,7 @@ const SignUpScreen = ({ navigation }) => {
         ],
         { cancelable: false }
       );
-  
+
     } catch (error) {
       console.error('Error during signup:', error.message);
     }
@@ -52,10 +53,10 @@ const SignUpScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === 'ios' ? 'padding' : null}
-    style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      style={styles.container}
     >
-    <View style={styles.container}>
+      <View style={styles.container}>
         <TextInput
           style={styles.input}
           placeholder="Full name"
@@ -93,7 +94,6 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
         />
 
-
         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
@@ -102,20 +102,24 @@ const SignUpScreen = ({ navigation }) => {
           onChangeText={(text) => setConfirmPassword(text)}
         />
 
-      {!passwordsMatch && (
-        <Text style={styles.errorText}>
-          Passwords must match and include at least one capital letter and one number.
-        </Text>
-      )}
+        {!passwordsMatch && (
+          <Text style={styles.errorText}>
+            Passwords must match and include at least one capital letter and one number.
+          </Text>
+        )}
 
-      <TouchableOpacity
-        onPress={handleSignUp}
-        style={[styles.button, { backgroundColor: passwordsMatch && validatePassword() ? 'black' : 'gray' }]}
-        disabled={!passwordsMatch || !validatePassword()}
-      >
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          onPress={handleSignUp}
+          style={[styles.button, { backgroundColor: passwordsMatch && validatePassword() ? 'black' : 'gray' }]}
+          disabled={!passwordsMatch || !validatePassword()}
+        >
+          <LinearGradient
+            colors={['#E60A0A', '#922929']}
+            style={styles.buttonGrad}>
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 };
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 12,
   },
   errorText: {
     color: 'red',
@@ -143,12 +147,21 @@ const styles = StyleSheet.create({
   button: {
     width: 330,
     padding: 20,
-    borderRadius: 5,
+    borderRadius: 12,
     marginBottom: 10,
   },
   buttonText: {
     color: 'white',
     textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '500',
+  },
+  buttonGrad: {
+    height: 55,
+    width: 330,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

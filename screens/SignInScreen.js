@@ -45,32 +45,37 @@ const SignInScreen = () => {
                 </View>
 
       <View>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
-
+        <View style={styles.inputContainer}> 
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+        
+      <View style={styles.views}>
         {/* Button Container */}
         <TouchableOpacity onPress={handleSignIn}>
           <View style={styles.buttonParent}>
             <LinearGradient
-              colors={['#EA6D42', '#E9582E']}
+              colors={['#E60A0A', '#922929']}
               style={styles.buttonGrad}></LinearGradient>
               <Text style={styles.buttonText}>Sign In</Text>
           </View>
         </TouchableOpacity>
+      </View>
+        
 
         <TouchableOpacity style={{marginTop: '20'}} onPress={() => navigation.navigate('SignUp')}>
-          <Text >Don't have an account? Sign up here</Text>
+          <Text >Don't have an account? Sign up</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -87,66 +92,61 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 6,
     marginRight: 10,
     borderColor: '#EBEBED', 
     borderWidth: 2,     
 
   },
+
+  inputContainer: {
+    paddingBottom: 20, 
+
+  },
+
+  views: {
+    paddingBottom: 20, 
+
+  },
+
   input: {
-    height: 40,
+    height: 55,
     width: '400',
     borderColor: '#EBEBED',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 12,
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    backgroundColor: 'white',
-  },
-  signInButton: {
-    backgroundColor: 'black',
-    borderRadius: 5,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    marginTop: 10,
-    width: 330,
-  },
-  signInButtonText: {
-    color: 'white',
-    fontWeight: '400',
-    fontSize: 15,
-    textAlign: 'center',
-  },
+
 
 
   buttonContainer: {
     marginTop: 30,
   },
   buttonText: {
-    color: 'white', 
+    color: 'white',
     fontSize: 18,
     fontWeight: '500',
     textAlign: 'center',
-    paddingTop: 5,
+    paddingTop: 12,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)', // Dark shadow color
+    textShadowOffset: { width: 0, height: 2 }, // Offset for the dark shadow
+    textShadowRadius: 3, // Radius of the dark shadow
   },
   buttonGrad: {
-    height: 45,
+    height: 55,
     width: 330,
-    borderRadius: 10,
+    borderRadius: 12,
     position: 'absolute',
     bottom: 5,
   },
   buttonParent: {
-    height: 45,
+    height: 55,
     width: 330,
-    borderRadius: 10,
-    backgroundColor: 'rgba(233, 100, 60, 0.1)',
+    borderRadius: 12,
+    backgroundColor: 'rgba(80, 21, 21,  0.075)',
     elevation: 5,
   },
 });

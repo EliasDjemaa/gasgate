@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import axios from 'axios';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import axios from 'axios';
+
+const { width } = Dimensions.get('window');
+const buttonWidth = (width - 48) / 2; // Adjust 48 according to your desired spacing
 
 export default function AppHomeScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [requestedCertificates, setRequestedCertificates] = useState([]);
   const [completedPdfCount, setCompletedPdfCount] = useState(0);
 
-  
   useEffect(() => {
     getCurrentUsername();
     fetchRequestedCertificates();
@@ -18,7 +20,7 @@ export default function AppHomeScreen({ navigation }) {
 
   const getCurrentUsername = async () => {
     try {
-      const response = await axios.get('http://51.21.134.104/get_current_username'); 
+      const response = await axios.get('http://51.21.134.104/get_current_username');
       const { username } = response.data;
       setUsername(username);
     } catch (error) {
@@ -40,7 +42,6 @@ export default function AppHomeScreen({ navigation }) {
     try {
       const response = await axios.get('http://51.21.134.104/cp12_pdfs');
       const { pdf_urls } = response.data;
-      // Assuming you have logic to set completedPdfCount based on fetched pdf_urls
       setCompletedPdfCount(pdf_urls.length);
     } catch (error) {
       console.error('Error fetching PDF URLs:', error);
@@ -93,20 +94,20 @@ export default function AppHomeScreen({ navigation }) {
         <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
           {/* Write */}
           <TouchableOpacity onPress={navigateToCertifSelection}>
-            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED',}]}>
-              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+            <View style={[styles.cardContainer, { width: buttonWidth }]}>
+              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 0,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
               </View>
               <View style={styles.textContainer}>
-                <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>Write</Text>
+                <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>New</Text>
                 <Text style={{ fontSize: wp(3), fontWeight: 'normal', color: '#515151', marginTop: 5 }}>5 certificates</Text>
               </View>
             </View>
           </TouchableOpacity>
           {/* Requested */}
           <TouchableOpacity onPress={navigateToRequested}>
-            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED'}]}>
-              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+            <View style={[styles.cardContainer, { width: buttonWidth }]}>
+              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 0,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle2} name="file-question" size={20} color="rgba(246, 171, 31, 0.8)" />
               </View>
               <View style={styles.textContainer}>
@@ -121,8 +122,8 @@ export default function AppHomeScreen({ navigation }) {
         <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
           {/* Completed */}
           <TouchableOpacity onPress={navigateToCompleted}>
-            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED'}]}>
-              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+            <View style={[styles.cardContainer, { width: buttonWidth }]}>
+              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 0,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle3} name="file-check" size={20} color="rgba(23, 214, 119, 0.8)" />
               </View>
               <View style={styles.textContainer}>
@@ -133,8 +134,8 @@ export default function AppHomeScreen({ navigation }) {
           </TouchableOpacity>
           {/* Incomplete */}
           <TouchableOpacity>
-            <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED'}]}>
-              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
+            <View style={[styles.cardContainer, { width: buttonWidth }]}>
+              <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 0,}]}>
                 <MaterialCommunityIcons style={styles.materialIconStyle4} name="file-clock" size={20} color="rgba(244, 85, 82, 1)" />
               </View>
               <View style={styles.textContainer}>
@@ -146,7 +147,7 @@ export default function AppHomeScreen({ navigation }) {
         </View>
 
         {/* Recent REQUESTED certificates */}
-        <View style={{ marginHorizontal: 14, backgroundColor: '#ffedd5', borderRadius: 8, marginTop: 3 }}>
+        <View style={{ marginHorizontal: 14, backgroundColor: '#ffedd5', borderRadius: 12, marginTop: 3 }}>
           <View style={{ marginHorizontal: 14, alignItems: 'left', marginBottom: 25 }}>
             <Text style={{ fontSize: wp(5), fontWeight: '600', color: 'black', marginTop: 14 }}>Requests</Text>
             <Text style={{ fontSize: wp(4), fontWeight: 'normal', color: 'black', marginTop: 7, textAlign: 'left' }}>Here are all the recent requested certificates.</Text>
@@ -170,37 +171,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 13,
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1.4,
     borderColor: '#E0DFE4',
     width: 170,
-    
   },
   textContainer: {
     marginLeft: 10,
   },
   iconContainer: {
-    borderRadius: 10,  
-    padding: 6,       
-    marginRight: 0,  
-    elevation: 5, 
-  },
-  pdfCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: 'white',
-    marginHorizontal: 30,
-    marginBottom: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ccc',
-  },
-  pdfCardText: {
-    fontSize: wp(4),
-    fontWeight: 'normal',
-    color: 'black',
-    marginLeft: 10,
+    borderRadius: 12,
+    padding: 6,
+    marginRight: 0,
+    elevation: 5,
   },
   materialIconStyle1: {
     shadowColor: 'rgba(117, 119, 230, 1)',
@@ -208,7 +191,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8, 
+    shadowOpacity: 0.8,
     shadowRadius: 10,
     elevation: 5,
   },
@@ -218,9 +201,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8, 
+    shadowOpacity: 0.8,
     shadowRadius: 10,
-    elevation: 5, 
+    elevation: 5,
   },
   materialIconStyle3: {
     shadowColor: 'rgba(23, 214, 119, 1)',
@@ -228,9 +211,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8, 
+    shadowOpacity: 0.8,
     shadowRadius: 10,
-    elevation: 5, 
+    elevation: 5,
   },
   materialIconStyle4: {
     shadowColor: 'rgba(244, 85, 82, 1)',
@@ -238,9 +221,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8, 
+    shadowOpacity: 0.8,
     shadowRadius: 10,
-    elevation: 5, 
+    elevation: 5,
   },
   certificateCard: {
     flexDirection: 'row',
@@ -249,7 +232,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginHorizontal: 30,
     marginBottom: 10,
-    borderRadius: 8,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: '#ccc',
   },
@@ -258,19 +241,5 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'black',
     marginLeft: 10,
-  },
-  certificateCard: {
-    backgroundColor: 'white',
-    padding: 15,
-    marginHorizontal: 10,
-    marginBottom: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ccc',
-  },
-  certificateText: {
-    fontSize: wp(4),
-    fontWeight: 'normal',
-    color: 'black',
   },
 });

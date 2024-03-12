@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Alert, Dimensions } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import axios from 'axios';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+const { width } = Dimensions.get('window');
+const cardWidth = width - 28;
 
 export default function Requested({ navigation }) {
     const [certificates, setCertificates] = useState([]);
@@ -73,9 +76,9 @@ export default function Requested({ navigation }) {
                 {/* Display certificates */}
                 {certificates.map((certificate, index) => (
                     <TouchableOpacity key={index} onPress={() => navigateToCertificateScreen(certificate.certificate_type)}>
-                        <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1,}]}>
-                            <View style={[styles.iconContainer, { backgroundColor: 'white' , borderColor: '#EBEBED', borderWidth: 1.4,}]}>
-                                <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)"/>
+                        <View style={[styles.cardContainer, { width: cardWidth }]}>
+                            <View style={[styles.iconContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1.4 }]}>
+                                <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(117, 119, 230, 0.8)" />
                             </View>
                             <View style={styles.textContainer}>
                                 <Text style={{ fontSize: wp(4), fontWeight: 'bold', color: 'black' }}>{certificate.certificate_type}</Text>
@@ -120,7 +123,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 13,
         borderRadius: 8,
-        width: 350,
     },
     textContainer: {
         marginLeft: 10,

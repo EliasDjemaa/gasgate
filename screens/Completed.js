@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import axios from 'axios';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+
+const { width } = Dimensions.get('window');
+const cardWidth = width - 28;
 
 export default function Completed({ navigation }) {
     const [pdfData, setPdfData] = useState([]);
@@ -49,7 +52,7 @@ export default function Completed({ navigation }) {
                 {/* Fetched data is rendered into cards */}
                 {pdfData.map((pdf, index) => (
                     <TouchableOpacity key={index} onPress={() => Linking.openURL(pdf.file_url)}>
-                        <View style={[styles.cardContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1 }]}>
+                        <View style={[styles.cardContainer, { width: cardWidth }]}>
                             <View style={[styles.iconContainer, { backgroundColor: 'white', borderColor: '#EBEBED', borderWidth: 1.4 }]}>
                                 <MaterialCommunityIcons style={styles.materialIconStyle1} name="file" size={20} color="rgba(23, 214, 119, 0.8)" />
                             </View>
@@ -96,7 +99,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 13,
         borderRadius: 8,
-        width: 350,
     },
     textContainer: {
         marginLeft: 10,
